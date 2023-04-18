@@ -1,4 +1,4 @@
-* [Introduction](README.md)
+* [Introduction](index.md)
 * [Domain Analysis](domain-analysis/)
 * [Requirements](requirements/)
 * [Design](design/)
