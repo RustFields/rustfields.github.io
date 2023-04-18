@@ -2,12 +2,12 @@
 
 ## Aggregate Programming
 
-Collective Adaptive Systems refer to a form of complex systems where a large number of heterogeneous entities interact without specific external or internal central control, adapt their behaviour to environmental settings in pursuit of an individual or collective goal. Actual behaviour arises as an emergent property through swarm or collective intelligence.
+**Collective Adaptive Systems** refer to a form of complex systems where a large number of heterogeneous entities interact without specific external or internal central control, adapt their behaviour to environmental settings in pursuit of an individual or collective goal. Actual behaviour arises as an emergent property through swarm or collective intelligence.
 Examples of CAS are drone swarms, ant colonies, economic markets and many others.
 
-Aggregate Programming is a paradigm for the development of collective adaptive systems (CAS). It provides a compositional, functional programming model for expressing the self-organising behaviour of a CAS from a global perspective.
+**Aggregate Programming** is a paradigm for the development of collective adaptive systems (CAS). It provides a compositional, functional programming model for expressing the self-organising behaviour of a CAS from a global perspective.
 
-Aggregate Computing (AC) is formally grounded in the field calculus (FC), a minimal core language that captures the key mechanisms for bridging local and global behaviour. FC is based on the notion of a (computational) field, a (possibly dynamic) map from a (possibly dynamic) domain of devices to computational values.
+**Aggregate Computing** (AC) is formally grounded in the field calculus (FC), a minimal core language that captures the key mechanisms for bridging local and global behaviour. FC is based on the notion of a (computational) field, a (possibly dynamic) map from a (possibly dynamic) domain of devices to computational values.
 
 Aggregate Computing is based on a logical model that can be mapped diversely onto physical infrastructure.
 
@@ -19,11 +19,11 @@ Aggregate Computing is based on a logical model that can be mapped diversely ont
 
 In practice, devices sustain the aggregate computation through asynchronous sense-compute-(inter)act rounds which conceptually consist of the following steps:
 
-1. Context update: the device retrieves previous state, environment data (through sensors), and messages from neighbours.
-2. Aggregate program execution: the field computation is executed against the local context; this yields an output.
-3. Action
-    1. Export broadcasting to neighbours: from the output, a subset of data (called an export) for neighbour coordination can be automatically derived; the export has to be broadcast to the entire neighbourhood.
-    2. Execution of actuators: the output of the program can describe a set of actuations to be performed on the environment.
+1. **Context update**: the device retrieves previous state, environment data (through sensors), and messages from neighbours.
+2. **Aggregate program execution**: the field computation is executed against the local context; this yields an output.
+3. **Action**
+    1. **Export broadcasting to neighbours**: from the output, a subset of data (called an export) for neighbour coordination can be automatically derived; the export has to be broadcast to the entire neighbourhood.
+    2. **Execution of actuators**: the output of the program can describe a set of actuations to be performed on the environment.
 
 ## Programming Model
 
