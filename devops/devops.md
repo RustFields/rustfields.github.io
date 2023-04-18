@@ -13,9 +13,9 @@ The team agreed on working with `Git Flow` workflow inside the implementation re
 
 TODO feature branch name convention
 
-### Conventional Commit
+### Commits
 
-The team adopted the conventional-commit convention. This strategy provides an easy set of rules for creating an explicit commit history and allows to automatically define the number of versions released.
+The team adopted the [conventional-commit convention](https://www.conventionalcommits.org/en/v1.0.0/). This strategy provides an easy set of rules for creating an explicit commit history and allows to automatically define the number of versions released.
 
 The team agreed on an extension of the standard convention, using the following set of commit types:
 
