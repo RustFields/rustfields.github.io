@@ -1,3 +1,3 @@
-* [Domain Analysis](domain-problem-analysis.md)
-* [Subdomain Analysis](subdomain-analysis.md)
+* [Business Domain](business-domain.md)
+* [Problem Analysis](domain-problem-analysis.md)
 * [Ubiquitous Language](ubiquitous-language.md)
