@@ -1,9 +1,9 @@
 # Chapters
 
 * [Introduction](introduction/intro.md)
-* [Domain Analysis](domain-analysis/)
-* [Requirements](requirements/)
-* [Design](design/)
+* [Domain Analysis](domain-analysis/SUMMARY.md)
+* [Requirements](requirements/SUMMARY.md)
+* [Design](design/SUMMARY.md)
 * [Implementation](implementation/implementation.md)
 * [DevOps Techniques](devops/devops.md)
 * [Conclusion](conclusion/conclusion.md)
