@@ -5,8 +5,13 @@ parent: Domain Analysis
 nav_order: 1
 permalink: /domain-analysis/business-domain
 ---
-
+## Table of contents
+{: .no_toc .text-delta }
+1. TOC
+{:toc}
+---
 # Business Domain
+
 
 ## Computational Fields & Field Calculus
 A **Computational Field** is a function mapping a set of devices distributed over a network to a structured value. Such fields are aggregate-level distributed data structures which, due to the ongoing feedback loops that produce and maintain them, are generally robust to changes in the underlying topology (e.g., due to faults, mobility, or openness) and to unexpected interactions with the external environment. They are thus useful for implementing and composing self-organising coordination patterns to adaptively regulate the behaviour of complex distributed systems.

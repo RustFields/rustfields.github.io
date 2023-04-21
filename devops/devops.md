@@ -4,6 +4,12 @@ title: DevOps Techniques
 nav_order: 7
 permalink: /devops
 ---
+## Table of contents
+{: .no_toc .text-delta }
+1. TOC
+   {:toc}
+---
+
 # DevOps Techniques
 
 `DevOps` engineering is a software development methodology that aims at communication and collaboration among developers and information technologies workers. This set of techniques respond to interdependencies between software development and relative IT operations, allowing a faster and more efficient organization of software products and services.
