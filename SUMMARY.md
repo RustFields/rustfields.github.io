@@ -1,5 +1,4 @@
 * [Index](index.md)
-* [Introduction](introduction/intro.md)
 * [Domain Analysis](domain-analysis/)
 * [Requirements](requirements/)
 * [Design](design/)
