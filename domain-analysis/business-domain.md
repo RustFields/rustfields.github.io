@@ -1,5 +1,11 @@
 # Business Domain
 
+## Computational Fields & Field Calculus
+A **Computational Field** is a function mapping a set of devices distributed over a network to a structured value. Such fields are aggregate-level distributed data structures which, due to the ongoing feedback loops that produce and maintain them, are generally robust to changes in the underlying topology (e.g., due to faults, mobility, or openness) and to unexpected interactions with the external environment. They are thus useful for implementing and composing self-organising coordination patterns to adaptively regulate the behaviour of complex distributed systems.
+
+**Field Calculus** is a minimal core calculus meant to precisely capture a set of key in-
+gredients of programming languages supporting the creation of computational fields: composition of fields, functions over fields, evolution of fields over time, construction of fields of values from neighbours, and restriction of a field computation to a sub-region of the network.
+
 ## Aggregate Programming
 
 **Collective Adaptive Systems** refer to a form of complex systems where a large number of heterogeneous entities interact without specific external or internal central control, adapt their behaviour to environmental settings in pursuit of an individual or collective goal. Actual behaviour arises as an emergent property through swarm or collective intelligence.
