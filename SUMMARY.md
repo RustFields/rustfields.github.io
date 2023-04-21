@@ -1,7 +1,0 @@
-* [Index](index.md)
-* [Domain Analysis](domain-analysis/)
-* [Requirements](requirements/)
-* [Design](design/)
-* [Implementation](implementation/implementation.md)
-* [DevOps Techniques](devops/devops.md)
-* [Conclusion](conclusion/conclusion.md)
