@@ -1,3 +1,10 @@
+---
+layout: default
+title: Introduction
+nav_order: 99
+permalink: /introduction
+---
+
 # Introduction
 
 This website contains all the documentation produced for the `Rust Fields` project, which is brought on with a Domain Driven approach.

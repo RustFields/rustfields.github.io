@@ -1,3 +1,11 @@
+---
+layout: default
+title: Business Domain
+parent: Domain Analysis
+nav_order: 1
+permalink: /domain-analysis/business-domain
+---
+
 # Business Domain
 
 ## Computational Fields & Field Calculus

@@ -1,3 +1,11 @@
+---
+layout: default
+title: Architecture
+nav_order: 2
+parent: Design
+has_children: true
+permalink: /design/architecture
+---
 # Architecture
 
 * [Architectural Map](architectural-map.md)

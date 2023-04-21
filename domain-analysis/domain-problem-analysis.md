@@ -1,3 +1,11 @@
+---
+layout: default
+title: Domain Problem Analysis
+parent: Domain Analysis
+nav_order: 2
+permalink: /domain-analysis/domain-problem-analysis
+---
+
 # Domain Problem Analysis
 
 1. **What is ScaFi?**

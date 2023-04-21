@@ -1,3 +1,9 @@
+---
+layout: default
+title: Ubiquitous Language
+parent: Domain Analysis
+nav_order: 3
+---
 # Ubiquitous Language
 
 <table>
