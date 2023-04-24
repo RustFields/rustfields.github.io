@@ -54,7 +54,10 @@ Following the conventional commit standard, the version number is defined in the
 ### Code Quality Control
 ### Tests
 
-[comment]: <> (### Automatic Dependency Update)
+
+### Automatic Dependency Update
+
+The team agreed on using `renovate` for automatic dependencies updates.
 
 ## Continuous Delivery
 
@@ -63,3 +66,5 @@ Following the conventional commit standard, the version number is defined in the
 [comment]: <> (### Containerization)
 
 ## Licenses
+
+Every repository in the organization is endowed with the Apache License 2.0.
