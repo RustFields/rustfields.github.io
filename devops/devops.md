@@ -31,13 +31,25 @@ The team adopted the [conventional-commit convention](https://www.conventionalco
 
 The team agreed on an extension of the standard convention, using the following set of commit types:
 
-* **feat!**: identifies a breaking change feature, increasing the major version number.
-* **feat**: identifies a feature, increasing the minor version number.
-* **fix**: identifies a patch change, increasing the patch version number.
-* **chore**: identifies a minor change that doesn't affect the overall system's behavior.
-* **docs**: identifies an update to the documentation.
-* **ci**: identifies changes in the repository's workflow definition.
-* **deps**: identifies the update of a library dependency.
+- **MAJOR release**
+  - Any commit type and scope terminating with `!` causes a `BREAKING CHANGE`
+- **MINOR release**
+  - Commit type `chore` with scope `api-deps` (Dependency updates)
+  - Commit type `feat` (Features) with any scope
+- **PATCH release**
+  - Commit type `chore` with scope `core-deps` (Dependency updates)
+  - Commit type `fix` (Bug Fixes) with any scope
+  - Commit type `docs` (Documentation) with any scope
+  - Commit type `perf` (Performance improvements) with any scope
+  - Commit type `revert` (Revert previous changes) with any scope
+- **No release**
+  - Commit type `test` (Tests)
+  - Commit type `ci` (Build and continuous integration)
+  - Commit type `build` (Build and continuous integration)
+  - Commit type `chore` with scope `deps` (Dependency updates)
+  - Commit type `chore` (General maintenance) with scopes different than the ones mentioned above
+  - Commit type `style` (Style improvements) with any scope
+  - Commit type `refactor` (Refactoring) with any scope
 
 ### Versioning
 
