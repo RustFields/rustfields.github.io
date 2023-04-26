@@ -16,7 +16,7 @@ permalink: /domain-analysis/business-domain
 ## Computational Fields & Field Calculus
 A **Computational Field** is a function mapping a set of devices distributed over a network to a structured value. Such fields are aggregate-level distributed data structures which, due to the ongoing feedback loops that produce and maintain them, are generally robust to changes in the underlying topology (e.g., due to faults, mobility, or openness) and unexpected interactions with the external environment. They are thus useful for implementing and composing self-organizing coordination patterns to adaptively regulate the behavior of complex distributed systems.
 
-**Field Calculus** is a minimal core calculus meant to precisely capture a set of key ingredients of programming languages supporting the creation of computational fields: composition of fields, functions over fields, evolution of fields over time, construction of fields of values from neighbors, and restriction of a field computation to a sub-region of the network.
+**Field Calculus** is a minimal core calculus meant to precisely capture a set of key ingredients of programming languages supporting the creation of computational fields: composition of fields, functions over fields, the evolution of fields over time, construction of fields of values from neighbors, and restriction of a field computation to a sub-region of the network.
 
 ## Aggregate Programming
 

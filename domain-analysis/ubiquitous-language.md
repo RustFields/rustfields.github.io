@@ -14,7 +14,7 @@ nav_order: 3
     </tr>
     <tr>
         <td>Aggregate Program</td>
-        <td>Specification for a collective behaviour that need to be achieved by the CAS</td>
+        <td>Specification for a collective behavior that need to be achieved by the CAS</td>
         <td>Collective Adaptive System</td>
     </tr>
     <tr>
@@ -24,12 +24,12 @@ nav_order: 3
     </tr>
     <tr>
         <td>Device</td>
-        <td>A singular entity of the CAS. Also called: nodes, agents, robots.</td>
+        <td>A singular entity of the CAS. Also called: nodes, agents and robots.</td>
         <td></td>
     </tr>
     <tr>
         <td>Neighbour</td>
-        <td>A relation between devices which communicate directly.</td>
+        <td>A relation between devices that communicate directly.</td>
         <td></td>
     </tr>
     <tr>
@@ -39,7 +39,7 @@ nav_order: 3
     </tr>
     <tr>
         <td>Field Calculus</td>
-        <td>A mathematical model in which nvalues are first class entity.</td>
+        <td>A mathematical model in which nvalues are first-class entity.</td>
         <td></td>
     </tr>
     <tr>
@@ -54,7 +54,7 @@ nav_order: 3
     </tr>
     <tr>
         <td>Export</td>
-        <td>Abstraction for the result of a local computation.</td>
+        <td>Abstraction for the result of local computation.</td>
         <td></td>
     </tr>
     <tr>
@@ -69,7 +69,7 @@ nav_order: 3
     </tr>
     <tr>
         <td>Abstract Syntax Tree</td>
-        <td>A data oriented representation of the aggregate program structure.</td>
+        <td>A data-oriented representation of the aggregate program structure.</td>
         <td>Path</td>
     </tr>
     <tr>
@@ -84,12 +84,12 @@ nav_order: 3
     </tr>
     <tr>
         <td>Nbr</td>
-        <td>It observes the value of an expression across neighbours, producing a “field of fields”.</td>
+        <td>It observes the value of an expression across neighbors, producing a “field of fields”.</td>
         <td></td>
     </tr>
     <tr>
         <td>Rep</td>
-        <td>It iteratively updates the value of the input expression at each device with the minimum available at any neighbour.</td>
+        <td>It iteratively updates the value of the input expression at each device with the minimum available at any neighbor.</td>
         <td></td>
     </tr>
     <tr>
