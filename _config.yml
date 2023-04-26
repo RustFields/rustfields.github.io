@@ -4,3 +4,5 @@ remote_theme: pmarsceill/just-the-docs
 plugins:
   - jekyll-remote-theme
 url: https://rustfields.github.io
+exclude:
+  - git-hooks/
