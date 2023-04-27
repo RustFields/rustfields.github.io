@@ -14,17 +14,22 @@ nav_order: 3
     </tr>
     <tr>
         <td>Aggregate Program</td>
-        <td>Specification for a collective behavior that need to be achieved by the CAS</td>
+        <td>Specification for a collective behavior that need to be achieved.</td>
         <td>Collective Adaptive System</td>
     </tr>
     <tr>
-        <td>Collective Adaptive System</td>
+        <td>VM</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>*Collective Adaptive System</td>
         <td>A large number of heterogeneous entities that act as a collective.</td>
         <td></td>
     </tr>
     <tr>
         <td>Device</td>
-        <td>A singular entity of the CAS. Also called: nodes, agents and robots.</td>
+        <td>A singular entity that executes the aggregate program. Also called: nodes, agents and robots.</td>
         <td></td>
     </tr>
     <tr>
@@ -34,27 +39,27 @@ nav_order: 3
     </tr>
     <tr>
         <td>Computational Field</td>
-        <td>A field is a collective structure that maps each device in some portion of the network to locally computed values over time. Also called: nvalue.</td>
+        <td>A field is a collective structure that maps each device in some portion of the network to locally computed values over time.</td>
         <td></td>
     </tr>
     <tr>
         <td>Field Calculus</td>
-        <td>A mathematical model in which nvalues are first-class entity.</td>
+        <td>A programming model in which computational fields are first-class entity.</td>
         <td></td>
     </tr>
     <tr>
-        <td>Sensor</td>
-        <td>Piece of hardware that serves as a sensor or actuator for the device. It expresses the capabilities of the device in terms of interactions with the real world.</td>
+        <td>Sensor TODO</td>
+        <td>Piece of hardware that serves as a sensor for the device. It expresses the capabilities of the device in terms of interactions with the real world.</td>
         <td></td>
     </tr>
     <tr>
         <td>Environment</td>
-        <td>An abstraction for the real world, in which the CAS is.</td>
+        <td>An abstraction for the real world.</td>
         <td></td>
     </tr>
     <tr>
         <td>Export</td>
-        <td>Abstraction for the result of local computation.</td>
+        <td>Abstraction for the result of local computation. TODO è un ast decorato con il valore della computazione</td>
         <td></td>
     </tr>
     <tr>
@@ -74,7 +79,7 @@ nav_order: 3
     </tr>
     <tr>
         <td>Context</td>
-        <td>An abstraction for the local computation's input. It contains the result of the last collective computation and the local status of the device.</td>
+        <td>An abstraction for the local computation's input. It contains the neighbors' exports,  and the local status of the device.</td>
         <td></td>
     </tr>
     <tr>
@@ -89,17 +94,17 @@ nav_order: 3
     </tr>
     <tr>
         <td>Rep</td>
-        <td>It iteratively updates the value of the input expression at each device with the minimum available at any neighbor.</td>
+        <td>It iteratively updates the value of the input expression at each device using the last computed value.</td>
         <td></td>
     </tr>
     <tr>
-        <td>Exchange</td>
+        <td>Exchange TODO</td>
         <td>The exchange construct handles neighbour-to-neighbour propagation of partial accumulates.</td>
         <td></td>
     </tr>
     <tr>
         <td>Round</td>
-        <td>Corresponds to a local computation in a device.</td>
+        <td>Correspond to a local computation in a device. Create the context, evaluate the aggregate program and share the exports to the neighborhood.</td>
         <td></td>
     </tr>
 </table>
