@@ -93,6 +93,26 @@ nav_order: 3
         <td></td>
     </tr>
     <tr>
+        <td>Foldhood</td>
+        <td>Aggregates the results of the neighbor computation.</td>
+    <td></td>
+    </tr>
+    <tr>
+        <td>Branch</td>
+        <td>It is like the if statement.</td>
+    <td></td>
+    </tr>
+    <tr>
+        <td>Mid</td>
+        <td>It is the ID of the local device.</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Sense</td>
+        <td>Return the value of a local sensor.</td>
+        <td></td>
+    </tr>
+    <tr>
         <td>Exchange</td>
         <td>The exchange construct handles neighbour-to-neighbour propagation of partial accumulates.</td>
         <td></td>
