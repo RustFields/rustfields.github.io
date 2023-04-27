@@ -47,3 +47,6 @@ permalink: /domain-analysis/domain-problem-analysis
 
 7. **Is the ScaFi core tested?**
 > Yes, there are some tests. However if you can expand this test suit during this work, we will be pleased.
+
+8. **What an user can do with our software?**
+> The typical user of our application is a developer. He should be able to define an Aggregate Program using the default constructs of our language. This program should be run by what we call a RoundVM: a virtual machine that 

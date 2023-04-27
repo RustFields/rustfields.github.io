@@ -23,7 +23,8 @@ A **Computational Field** is a function mapping a set of devices distributed ove
 **Collective Adaptive Systems** refer to a form of complex systems where a large number of heterogeneous entities interact without specific external or internal central control and adapt their behavior to environmental settings in pursuit of an individual or collective goal. Actual behavior arises as an emergent property through swarm or collective intelligence.
 Examples of CAS are drone swarms, ant colonies, economic markets and many others.
 
-**Aggregate Programming** is a paradigm for the development of collective adaptive systems (CAS). It provides a compositional, functional programming model for expressing the self-organizing behavior of a CAS from a global perspective.
+
+**Aggregate Programming** is a paradigm suitable for the development of collective adaptive systems (CAS). It provides a compositional, functional programming model for expressing the self-organizing behavior of a CAS from a global perspective.
 
 **Aggregate Computing** (AC) is formally grounded in field calculus (FC), a minimal core language that captures the key mechanisms for bridging local and global behavior. FC is based on the notion of a (computational) field, a (possibly dynamic) map from a (possibly dynamic) domain of devices to computational values.
 
@@ -31,6 +32,7 @@ Aggregate Computing is based on a logical model that can be mapped diversely ont
 
 * From a structural point of view, an aggregate system is merely a graph or network of devices (also called: nodes, agents or robots). The edges connecting nodes represent logical communication channels that are set up by the aggregate computing platform according to an application-specific neighboring relationship (which, for situated systems, is typically a communication range).
 From a behavioral point of view, any device “continuously” interprets the aggregate program against its local context.
+// TODO define context
 * From an interactional point of view, any device continuously interacts with its neighbors to acquire and propagate context. This is what enables local activity to influence global activity and vice versa.
 
 ## Execution model
@@ -45,6 +47,6 @@ In practice, devices sustain the aggregate computation through asynchronous sens
 
 ## Programming Model
 
-Aggregate computing is a macro-programming paradigm where a single program (called the aggregate program) defines the overall behavior of a network of devices or agents.
+Aggregate programming is a macro-programming paradigm where a single program (called the aggregate program) defines the overall behavior of a network of devices or agents.
 
 The aggregate program does not explicitly refer to the execution model discussed in the previous section, i.e., it somewhat abstracts from it (though in some cases it may assume that the execution model has certain characteristics). Instead, it expresses how input fields map to output fields: for instance, how a field of temperature sensor readings maps to a field of warnings; or, as another example, how a field of service requests and resource advertisements map to a field of task allocations.
