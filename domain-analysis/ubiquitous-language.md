@@ -98,7 +98,6 @@ nav_order: 3
         <td></td>
     </tr>
     <tr>
-<<<<<<< HEAD
         <td>Foldhood</td>
         <td>Aggregates the results of the neighbor computation.</td>
     <td></td>
@@ -120,9 +119,7 @@ nav_order: 3
     </tr>
     <tr>
         <td>Exchange</td>
-=======
         <td>Exchange TODO</td>
->>>>>>> develop
         <td>The exchange construct handles neighbour-to-neighbour propagation of partial accumulates.</td>
         <td></td>
     </tr>
