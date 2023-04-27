@@ -49,4 +49,12 @@ permalink: /domain-analysis/domain-problem-analysis
 > Yes, there are some tests. However if you can expand this test suit during this work, we will be pleased.
 
 8. **What an user can do with our software?**
-> The typical user of our application is a developer. He should be able to define an Aggregate Program using the default constructs of our language. This program should be run by what we call a RoundVM: a virtual machine that 
+> The typical user of our application is a developer. He should be able to define an Aggregate Program using the default constructs of our language. This program should be run by what we call a RoundVM: a virtual machine that simulate the computation in each device.
+
+9. **So what are the default constructs of our language?**
+
+10. **Does the user define only the aggregate program or other things like the network?**
+
+11. **In which language the user should be able to write the aggregate program?**
+
+12. **How does the program execution works?**
