@@ -27,7 +27,7 @@ permalink: /domain-analysis/domain-problem-analysis
 > - spala: provides an actor-based aggregate computing middleware.
 > - scafi-distributed: ScaFi integration-layer for spala.
 
-3. **What are the aspects of ScaFi that need to be improved?**
+3. **What aspects of ScaFi need to be improved?**
 > The first problem is that currently ScaFi is written in Scala 2: with the release of Scala 3 we want to adapt Scafi to the newest version of Scala.
 >
 > The second problem is about the platform: ScaFi is meant to run on different types of devices, from the bigger ones to the thin device, such as an Arduino. ScaFi needs a JVM to be executed, but those devices don't have the resources to launch a JVM. So we want a ScaFi version which is platform indipendent.
