@@ -118,7 +118,6 @@ nav_order: 3
         <td></td>
     </tr>
     <tr>
-        <td>Exchange</td>
         <td>Exchange TODO</td>
         <td>The exchange construct handles neighbour-to-neighbour propagation of partial accumulates.</td>
         <td></td>
