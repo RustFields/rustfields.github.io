@@ -56,3 +56,13 @@ permalink: /domain-analysis/domain-problem-analysis
 > There are different contructs that can be used.
 > You can use the language currently used by ScaFi, or adopt a new construct like Exchange.
 > The choice is yours.
+
+# Project Goals
+From the interview with the stakeholders the following goal has been identified:
+- Enable aggregate programming on a distributed network of heterogeneous devices.
+
+This main goal, is divided in different sub-goals:
+- Create a ScaFi version that can run native, without needing a JVM.
+- Update ScaFi to the latest version of Scala.
+- Create an integration layer that allow a Scala aggregate program to be run using a native core.
+- Find a standard message format to allow the communication between distributed heterogeneous devices.
