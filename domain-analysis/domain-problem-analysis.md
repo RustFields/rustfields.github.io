@@ -48,13 +48,11 @@ permalink: /domain-analysis/domain-problem-analysis
 7. **Is the ScaFi core tested?**
 > Yes, there are some tests. However if you can expand this test suit during this work, we will be pleased.
 
-8. **What an user can do with our software?**
+8. **What can an user do with our software?**
 > The typical user of our application is a developer. He should be able to define an Aggregate Program using the default constructs of our language. This program should be run by what we call a RoundVM: a virtual machine that simulate the computation in each device.
+> He could also define other things like the device network, but this is outside your project's scope.
 
-9. **So what are the default constructs of our language?**
-
-10. **Does the user define only the aggregate program or other things like the network?**
-
-11. **In which language the user should be able to write the aggregate program?**
-
-12. **How does the program execution works?**
+9. **What are the default constructs of our language?**
+> There are different contructs that can be used.
+> You can use the language currently used by ScaFi, or adopt a new construct like Exchange.
+> The choice is yours.

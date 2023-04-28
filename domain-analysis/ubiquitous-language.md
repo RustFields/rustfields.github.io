@@ -6,6 +6,10 @@ nav_order: 3
 ---
 # Ubiquitous Language
 
+
+TODO
+Terms to add: Network
+
 <table>
     <tr>
         <th>Term</th>
