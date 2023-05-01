@@ -7,25 +7,32 @@ parent: Requirements
 
 # Requirements Breakdown Structure
 
-## Scafi 3
-
-
 ## Native field calculus core
-1. Analysis of the current design in order to find possible improvements    
 
-2. Simulate the execution of an aggregate program
-    
-    2.1 Implement Rep
+1. Implement field calculus syntax:
+    1. Rep
+    2. Nbr
+    3. Foldhood
+    4. Branch
+    5. Exchange
+2. Implement the AST of the aggregate program:
+   1. Slot
+   2. Path
+3. Implement Context
+4. Implement Export
+5. Implement the Round VM
 
-    2.2 Implement Nbr
+## Integration layer between the native core and Java
 
-    2.3 Implement Exchange 
+1. Implement a Java wrapper for the basic constructs
 
-    2.4 Implement Slot
+## ScaFi with Scala 3
 
-    2.5 Implement Path
+1. Implement field calculus API
+   1. Language
+   2. Builtins
 
-    2.6 Implement VM
+## Standardize message format
 
-
-    
+1. Define standard message structure
+2. Propose a message-passing framework that is platform agnostic
