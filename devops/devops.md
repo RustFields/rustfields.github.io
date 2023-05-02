@@ -23,7 +23,9 @@ A GitHub organization named [RustFields](https://github.com/RustFields) was asso
 
 The team agreed on working with `Git Flow` workflow inside the implementation repositories, adapting it following the specific needs. Before merging code on the `main/master` branch, feature branches need to be approved by other team members using the `Pull Request` GitHub's service. In the "lightweight" repositories, such as [rustfields.github.io](https://github.com/RustFields/rustfields.github.io), the team chose not to use this complex mechanism.
 
-TODO feature branch name convention
+All the feature branches will follow a common structure based on the following template:
+
+`feature/{feature-name}`
 
 ### Commits
 
@@ -63,6 +65,14 @@ Following the conventional commit standard, the version number is defined in the
 
 ## Continuous Integration
 ### GitHub Actions
+
+The team decided to use the `GitHub Actions` service. The team used the following set of GitHub Actions for the project:
+
+* TODO
+* TODO
+
+Each repository has two active workflows, one for the Continuous Integration (CI) and another one for the Continuous Delivery (CD).
+
 ### Code Quality Control
 ### Tests
 
@@ -75,7 +85,7 @@ The team agreed on using `renovate` for automatic dependencies updates.
 
 ### Semantic Versioning and Releasing
 
-[comment]: <> (### Containerization)
+Thanks to the use of [Semantic Release](https://github.com/semantic-release/semantic-release) it was possible to automate all the versioning and releasing work. In particular, the action automatically calculates if a new version release is needed based on the committed commits in the `main/master` branch. If there is a commit that triggers a new version release (major, minor or patch) then the action creates the new tag, adding the appropriate version number to the one previously released, and then will create the GitHub Release with the reference of the last commit pushed on `main/master` branch.
 
 ## Licenses
 
