@@ -113,7 +113,7 @@ Terms to add: Network
     </tr>
     <tr>
         <td>Branch</td>
-        <td>TODO</td>
+        <td>Partition the domain into two subspaces that do not interact with each other.</td>
         <td>Language</td>
     </tr>
     <tr>
