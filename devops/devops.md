@@ -53,17 +53,20 @@ The team agreed on an extension of the standard convention, using the following 
   - Commit type `style` (Style improvements) with any scope
   - Commit type `refactor` (Refactoring) with any scope
 
+To ensure that the commits made are conformant to the required pattern, the team used `Git Hooks`.
+
 ### Versioning
 
 Following the conventional commit standard, the version number is defined in the format `X.Y.Z` where:
 
-* `X`: indicates the **major version** and is incremented when a breaking change occurs.
+* `X`: indicates a **major version** and is incremented when a breaking change occurs.
 * `Y`: indicates a **minor version** and is incremented every time a new feature is introduced in the system.
 * `Z`: indicates a **patch version** where typically errors are fixed and those changes do not modify the system APIs.
 
 [comment]: <> (### Commit Lint Check)
 
 ## Continuous Integration
+
 ### GitHub Actions
 
 The team decided to use the `GitHub Actions` service. The team used the following set of GitHub Actions for the project:
@@ -74,6 +77,7 @@ The team decided to use the `GitHub Actions` service. The team used the followin
 Each repository has two active workflows, one for the Continuous Integration (CI) and another one for the Continuous Delivery (CD).
 
 ### Code Quality Control
+
 ### Tests
 
 
