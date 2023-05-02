@@ -12,7 +12,6 @@ permalink: /domain-analysis/business-domain
 ---
 # Business Domain
 
-
 ## Computational Fields & Field Calculus
 A **Computational Field** is a function mapping a set of devices distributed over a network to a structured value. Such fields are aggregate-level distributed data structures which, due to the ongoing feedback loops that produce and maintain them, are generally robust to changes in the underlying topology (e.g., due to faults, mobility, or openness) and unexpected interactions with the external environment. They are thus useful for implementing and composing self-organizing coordination patterns to adaptively regulate the behavior of complex distributed systems.
 
@@ -22,7 +21,6 @@ A **Computational Field** is a function mapping a set of devices distributed ove
 
 **Collective Adaptive Systems** refer to a form of complex systems where a large number of heterogeneous entities interact without specific external or internal central control and adapt their behavior to environmental settings in pursuit of an individual or collective goal. Actual behavior arises as an emergent property through swarm or collective intelligence.
 Examples of CAS are drone swarms, ant colonies, economic markets and many others.
-
 
 **Aggregate Programming** is a paradigm suitable for the development of collective adaptive systems (CAS). It provides a compositional, functional programming model for expressing the self-organizing behavior of a CAS from a global perspective.
 

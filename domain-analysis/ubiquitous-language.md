@@ -57,6 +57,11 @@ Terms to add: Network
         <td>AST</td>
     </tr>
     <tr>
+        <td>Network</td>
+        <td>A network of heterogeneous devices that act as a collective.</td>
+        <td>Device</td>
+    </tr>
+    <tr>
         <td>Device</td>
         <td>A singular entity that executes the aggregate program. Also called: nodes, agents and robots.</td>
         <td>Neighbour</td>

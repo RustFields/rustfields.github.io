@@ -57,7 +57,7 @@ permalink: /domain-analysis/domain-problem-analysis
 > You can use the language currently used by ScaFi, or adopt a new construct like Exchange.
 > The choice is yours.
 
-# Project Goals
+## Project Goals
 From the interview with the stakeholders the following goal has been identified:
 - Enable aggregate programming on a distributed network of heterogeneous devices.
 
