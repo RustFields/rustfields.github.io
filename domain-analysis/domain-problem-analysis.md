@@ -12,6 +12,17 @@ permalink: /domain-analysis/domain-problem-analysis
 ---
 
 # Domain Problem Analysis
+<!-- TODO: check if this is correct -->
+
+Aggregate programming is actually only used by devices capable of running a JVM. 
+However, the goal of this project is to make the field calculus available also for thin devices that lack the resources to run a JVM, such as Arduino.
+
+Given this goal, we are committed to exploring different solutions to bring aggregate programming to thin devices. 
+There are various frameworks used for this purpose, such as Protelis and ScaFi.
+
+After a brief analysis of the two frameworks, we decided to focus on ScaFi because it is more mature and actively maintained.
+
+# Knowledge crunching
 
 1. **What is ScaFi?**
 
@@ -43,12 +54,12 @@ permalink: /domain-analysis/domain-problem-analysis
 6. **Should we start by implementing Aggregate Computing in Rust?**
 > My advice is to start from the minimal part of the ScaFi core: the VM. Write this VM in Rust and then, split the team in two group. One group will approach the problem top-down and the other bottom-up. At one point you eventually converge (hopefully) and this is where you draw the line.
 > By top-down I mean writing in Scala 3 the high level API.
-> Buttom-up i mean extending the minimal core by adding other components in Rust.
+> Buttom-up I mean extending the minimal core by adding other components in Rust.
 
 7. **Is the ScaFi core tested?**
-> Yes, there are some tests. However if you can expand this test suit during this work, we will be pleased.
+> Yes, there are some tests. However, if you can expand this test suit during this work, we will be pleased.
 
-8. **What can an user do with our software?**
+8. **What can a user do with our software?**
 > The typical user of our application is a developer. He should be able to define an Aggregate Program using the default constructs of our language. This program should be run by what we call a RoundVM: a virtual machine that simulate the computation in each device.
 > He could also define other things like the device network, but this is outside your project's scope.
 
@@ -63,6 +74,7 @@ From the interview with the stakeholders the following goal has been identified:
 
 This main goal, is divided in different sub-goals:
 - Create a ScaFi version that can run native, without needing a JVM.
+- <!--TODO perchè non usiamo scala native? per com'è scritto non c'è ragione di usare rust, trovare una spiegazione che possa essere sia quella dei thin device o altro-->
 - Update ScaFi to the latest version of Scala.
 - Create an integration layer that allow a Scala aggregate program to be run using a native core.
 - Find a standard message format to allow the communication between distributed heterogeneous devices.
