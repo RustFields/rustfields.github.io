@@ -6,10 +6,11 @@ permalink: /implementation-issues
 ---
 # Implementation Issues
 
-## Scala Native, Rust and C Interoperability
+## Scala Native, Rust and C interoperability
 
 Among the possible solutions analyzed to develop the integration layer between Rust and Scala, it was decided to use Scala Native and exploit the interoperability of the languages with the C language.
 Interoperability details are defined in the documentation of the two projects:
+
 - Rust: https://docs.rust-embedded.org/book/interoperability/index.html
 - Scala Native: https://scala-native.org/en/stable/user/interop.html
 
@@ -17,7 +18,24 @@ As the documentation states, interoperability has well-defined limits and it is 
 
 A Rust function can be made interoperable with the C language by making the following changes:
 
-As expected, you cannot use generics in Rust if your code is to be interoperable with the C language.
+```rust
+// before
+pub fn rust_function() {
+
+}
+
+// after
+#[no_mangle]
+pub extern "C" fn rust_function() {
+
+}
+```
+The Rust compiler mangles symbol names differently than native code linkers expect. As such, any function that Rust exports to be used outside of Rust needs to be told not to be mangled by the compiler using `#[no_mangle]`.
+By default, any function written in Rust will use the Rust [ABI](https://doc.rust-lang.org/reference/abi.html) (which is also not stabilized). Instead, when building outwards facing FFI APIs we need to tell the compiler to use the system ABI using `extern "C"`.
+
+As expected, you cannot use generics in Rust if your code needs to be interoperable with the C language.
+
+The following Rust code:
 
 ```rust
 #[no_mangle]
@@ -25,7 +43,21 @@ pub extern "C" fn local_sense<A: 'static>(&self, sensor_id: &SensorId) -> Option
     self.context.local_sense::<A>(sensor_id)
 }
 ```
+gives the following warning:
+
 ![](../assets/functions-generic-over-types-must-be-mangled-warning.png)
+
+This problem can be solved by replicating the functions for each data type compatible with both C and Rust, which introduces code repetition.
+
+Another problem is the representation of data structures, the `#[repr(C)]` directive must be used on any data structure that needs to be made compatible with C, like the following:
+
+```rust
+#[repr(C)]
+pub struct I32RoundVMWrapper {
+    pub(crate) vm: RoundVM,
+}
+```
+What happens if you use complex data structures, perhaps contained in another crate, defined without this directive? Just look at the following example:
 
 ```rust
 #[no_mangle]
@@ -35,8 +67,11 @@ pub extern "C" fn new(context: Context) -> Self {
     }
 }
 ```
+gives the following warning:
 
 ![](../assets/not-FFI-safe-warning.png)
+
+It was also discovered that using `#[no_mangle]` it is not possible to write functions with the same name. If in the project there are different modules, each with its own data structures, it is not possible to call functions in different modules with the same name. For instance, the function `new` is used to generate `struct` instances:
 
 ```rust
     #[no_mangle]
@@ -49,6 +84,7 @@ pub extern "C" fn new(context: Context) -> Self {
         }
     }
 ```
+gives the following error:
 
 ![](../assets/symbol-new-already-defined-error.png)
 
