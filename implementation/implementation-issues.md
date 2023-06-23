@@ -52,7 +52,7 @@ pub extern "C" fn new(context: Context) -> Self {
 
 ![](../assets/symbol-new-already-defined-error.png)
 
-## RUST LIMITATIONS EMERGED UPON IMPLEMENTING LANGUAGE CONSTRUCTS
+## Rust limitations emerged upon implementing language constructs
 
 During the development of a minimal Field Calculus core in Rust, an issue emerged that has not been resolved to date.
 
@@ -105,9 +105,9 @@ let result = l.rep(||0, |a| l.nbr(||a) + 1);
 ```
 In this block of code a mutable borrowing is performed at l.rep() and an immutable one in the closure at l.nbr(), making the code invalid.
 
-### POSSIBLE SOLUTIONS
+### Possible solutions
 
-### CELLS
+### Cells
 The concept of a Cell was introduced in Rust to implement a form of "internal mutability." A Cell is essentially a wrapper for a generic type that we might want to mutate. The mutable variable is then wrapped by the immutable Cell and mutated through the Cell interface itself. At this point it is possible to make multiple immutable borrows of the cell and use the mutable state within it. The following is an example of an nbr function that makes use of cells to pass a reference to round_vm to the closure:
 
 ```rust
@@ -129,7 +129,7 @@ fn nbr<A: 'static + Clone>(&mut self, expr: impl Fn() -> A) -> A {
 
 This code solves the problem of mutable and immutable reference to the same variable, however the get() method needs the wrapped type to implement the Copy trait, but unfortunately that trait cannot be implemented by RoundVM since Export cannot implement it since it contains references to Any.
 
-### CREATE A MACRO FOR DEPENDENCY INJECTION
+### Create a macro to perform dependency injection in functions
 
 The ability to perform dependency injection in functions through a macro such as:
 
