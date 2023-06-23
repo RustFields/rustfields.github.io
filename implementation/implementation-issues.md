@@ -71,7 +71,7 @@ gives the following warning:
 
 ![](../assets/not-FFI-safe-warning.png)
 
-It was also discovered that using `#[no_mangle]` it is not possible to write functions with the same name. If in the project there are different modules, each with its own data structures, it is not possible to call functions in different modules with the same name. For instance, the function `new` is used to generate `struct` instances:
+It was also discovered that using `#[no_mangle]` it is not possible to write functions with the same name. If in the project there are different modules, each with its data structures, it is not possible to define functions in different modules with the same name. For instance, the function `new` is used to generate `struct` instances:
 
 ```rust
     #[no_mangle]
