@@ -1,8 +1,8 @@
-# LIMITAZIONI DI RUST
+# RUST LIMITATIONS EMERGED UPON IMPLEMENTING LANGUAGE CONSTRUCTS
 
-Durante lo sviluppo di un core minimale del Field Calculus in Rust, è emersa una problematica ad ora non risolta.
+During the development of a minimal Field Calculus core in Rust, an issue emerged that has not been resolved to date.
 
-Il problema principale è la limitazione by-design di Rust al borrowing: non è infatti possibile che coesistano borrow mutabili ed immutabili di una stessa variabile nello stesso scope. Questa limitazione risulta problematica nell'implementazione dei costrutti fondamentali del linguaggio così come sono stati realizzati ad oggi in Scala:
+The main problem is Rust's by-design limitation to borrowing: it is not possible for mutable and immutable borrows of the same variable to coexist in the same scope. This limitation is problematic in the implementation of the fundamental constructs of the language as they have been realized to date in Scala:
 
 ```rust
 fn nbr<A: 'static + Clone>(&mut self, expr: impl Fn() -> A) -> A {
@@ -23,9 +23,9 @@ fn nbr<A: 'static + Clone>(&mut self, expr: impl Fn() -> A) -> A {
     }
 ```
 
-Questo codice risulta invalido poichè viene effettuato un borrow mutabile della round_vm in corrispondenza della chiamata a nest() ed uno immutabile all'interno della chiusura con l'implementazione della logica del costrutto, in quanto in Rust tutti i riferimenti a variabili esterne allo scope della chiusura sono ottenuti per borrowing immutabile.
+This code is invalid since a mutable borrow of the round_vm is made at the call to nest() and an immutable one inside the closure with the implementation of the construct logic, since in Rust all references to variables outside the scope of the closure are obtained by immutable borrowing.
 
-Un altro problema riscontrato durante l'implementazione dei costrutti fondamentali in Rust è stato la gestione della loro dipendenza con la VM: infatti, la scelta è ricaduta sulla creazione di un trait che racchiude la definizione dei costrutti e di una struttura dati contenente una RoundVM che lo deve implementare:
+Another problem encountered during the implementation of the core constructs in Rust was the management of their dependency with the VM: in fact, the choice fell on the creation of a trait that encapsulates the definition of the constructs and a data structure containing a RoundVM that must implement it:
 
 ```rust
 pub trait Language {
@@ -42,19 +42,19 @@ impl Language for L {
 }
 ```
 
-Questa scelta risulta in ultima analisi problematica quando si vuole comporre due costrutti, a causa dell'insorgenza della limitazione al borrowing sopracitata:
+This choice is ultimately problematic when two constructs are to be composed, due to the occurrence of the aforementioned limitation to borrowing:
 
 ```rust
 let mut l = L::new();
 // rep(0){x => nbr(x)+1}
 let result = l.rep(||0, |a| l.nbr(||a) + 1);
 ```
-In questo blocco di codice viene effettuato un borrowing mutabile in corrispondenza di l.rep() ed uno immutabile nella chiusura in corrispondenza di l.nbr(), rendendo il codice invalido.
+In this block of code a mutable borrowing is performed at l.rep() and an immutable one in the closure at l.nbr(), making the code invalid.
 
-## POSSIBILI SOLUZIONI
+## POSSIBLE SOLUTIONS
 
-### CELLE
-Il concetto di Cella è stato introdotto in Rust per realizzare una forma di "mutabilità interna". Una Cella è sostanzialmente un wrapper per un tipo generico che potremmo voler mutare. La variabile mutabile viene dunque wrappata dalla Cella immutabile e mutata attraverso l'interfaccia della cella stessa. A questo punto è possibile effettuare molteplici borrow immutabili della cella ed utilizzare lo stato mutabile al suo interno. Segue un esempio di funzione nbr che fa uso di celle per passare alla chiusura un riferimento alla round_vm:
+### CELLS
+The concept of a Cell was introduced in Rust to implement a form of "internal mutability." A Cell is essentially a wrapper for a generic type that we might want to mutate. The mutable variable is then wrapped by the immutable Cell and mutated through the Cell interface itself. At this point it is possible to make multiple immutable borrows of the cell and use the mutable state within it. The following is an example of an nbr function that makes use of cells to pass a reference to round_vm to the closure:
 
 ```rust
 fn nbr<A: 'static + Clone>(&mut self, expr: impl Fn() -> A) -> A {
@@ -73,11 +73,11 @@ fn nbr<A: 'static + Clone>(&mut self, expr: impl Fn() -> A) -> A {
     }
 ```
 
-Questo codice risolve il problema del riferimento mutabile ed immutabile ad una stessa variabile, tuttavia il metodo get() necessita che il tipo wrappato implementi il trait Copy, ma sfortunatamente tale trait non può essere implementato dalla RoundVM in quanto Export non può implementarlo siccome contiene dei riferimenti ad Any.
+This code solves the problem of mutable and immutable reference to the same variable, however the get() method needs the wrapped type to implement the Copy trait, but unfortunately that trait cannot be implemented by RoundVM since Export cannot implement it since it contains references to Any.
 
-### CREAZIONE DI UNA MACRO PER EFFETTUARE DEPENDENCY INJECTION
+### CREATE A MACRO FOR DEPENDENCY INJECTION
 
-La possibilità di effettuare dependency injection nelle funzioni attraverso una macro come ad esempio:
+The ability to perform dependency injection in functions through a macro such as:
 
 ```rust
     #[inject(RoundVM)]
@@ -85,12 +85,12 @@ La possibilità di effettuare dependency injection nelle funzioni attraverso una
         ...
     }
 ```
-permetterebbe di definire i costrutti fondamentali come funzioni pure e non metodi di un oggetto, rendendo teoricamente possibile scrivere codice di questo tipo:
+would allow fundamental constructs to be defined as pure functions and not methods of an object, making it theoretically possible to write such code:
 
 ```rust
     let result = rep(||0, |a| nbr(||a) + 1);
 ```
 
-in quanto non vengono effettuati borrowing problematici.
+as no problematic borrowing is performed.
 
-E importante sottolineare che ad oggi non sembra esistere un framework di dependency injection in Rust in grado di realizzare il codice sopra riportato, ma sarebbe forse possibile esplorare la soluzione reallizzandolo attraverso il macro system di Rust.
+It is important to note that to date there does not appear to be a dependency injection framework in Rust capable of realizing the above code, but it would perhaps be possible to explore the solution by realizing it through Rust's macro system.
