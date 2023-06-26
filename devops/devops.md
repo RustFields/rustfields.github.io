@@ -103,7 +103,7 @@ The team agreed on using `renovate` for automatic dependencies updates.
 
 ### Semantic Versioning and Releasing
 
-Thanks to the use of [Semantic Release](https://github.com/semantic-release/semantic-release) it was possible to automate all the versioning and releasing work. In particular, the action automatically calculates if a new version release is needed based on the committed commits in the `main/master` branch. If there is a commit that triggers a new version release (major, minor or patch) then the action creates the new tag, adding the appropriate version number to the one previously released, and then will create the GitHub Release with the reference of the last commit pushed on `main/master` branch.
+Thanks to the use of [Semantic Release](https://github.com/semantic-release/semantic-release) it was possible to automate all the versioning and releasing work. In particular, the action automatically calculates if a new release is needed based on the committed commits in the `main/master` branch. If there is a commit that triggers a new release (major, minor or patch) then the action creates the new tag, adding the appropriate version number between the actual and the last tag, and then will create the GitHub Release with the reference of the last commit pushed on `main/master` branch.
 
 ## Licenses
 
