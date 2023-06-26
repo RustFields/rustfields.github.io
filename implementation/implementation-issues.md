@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Implementation
+title: Implementation Issues
 nav_order: 6
 permalink: /implementation-issues
 ---
