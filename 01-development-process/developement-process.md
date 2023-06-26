@@ -4,6 +4,7 @@ has_children: true
 nav_order: 2
 ---
 
+# Development Process 
 
 The development process employed is an Agile methodology, incorporating integrations in the early stages based on a Domain-Driven Design (DDD) approach.
 
