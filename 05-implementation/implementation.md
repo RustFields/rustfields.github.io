@@ -12,8 +12,8 @@ permalink: /implementation
 
 Among the possible solutions analyzed for developing an integration layer between Rust and Scala, it was decided to use Scala Native and leverage the languages' interoperability with C. The details of interoperability are defined in the documentation of both projects:
 
-- Rust: https://docs.rust-embedded.org/book/interoperability/index.html
-- Scala Native: https://scala-native.org/en/stable/user/interop.html
+- [Rust](https://docs.rust-embedded.org/book/interoperability/index.html)
+- [Scala Native](https://scala-native.org/en/stable/user/interop.html)
 
 As the documentation states, interoperability has well-defined limits, and it is not possible to fully utilize the functionalities of both languages.
 
