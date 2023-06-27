@@ -4,11 +4,7 @@ parent: Domain analysis
 has_children: false
 nav_order: 1
 ---
-## Table of contents
-{: .no_toc .text-delta }
-1. TOC
-{:toc}
----
+
 # Business Domain
 
 ## Computational Fields & Field Calculus

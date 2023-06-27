@@ -4,11 +4,7 @@ parent: Domain Analysis
 has_children: false
 nav_order: 2
 ---
-## Table of contents
-{: .no_toc .text-delta }
-1. TOC
-   {:toc}
----
+
 
 # Domain Problem Analysis
 <!-- TODO: check if this is correct -->
