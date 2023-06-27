@@ -1,6 +1,6 @@
 ---
-layout: default
 title: Implementation
+has_children: true
 nav_order: 6
 ---
 # Implementation

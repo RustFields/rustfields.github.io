@@ -1,10 +1,8 @@
 ---
-layout: default
-title: Use Cases
+title: Use cases
+parent: Requirements 
+has_children: false
 nav_order: 2
-parent: Requirements
 ---
-
-
 
 # Use Cases

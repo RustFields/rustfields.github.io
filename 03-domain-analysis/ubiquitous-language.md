@@ -1,7 +1,7 @@
 ---
-layout: default
 title: Ubiquitous Language
 parent: Domain Analysis
+has_children: false
 nav_order: 3
 ---
 # Ubiquitous Language

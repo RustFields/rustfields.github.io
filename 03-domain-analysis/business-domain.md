@@ -1,7 +1,7 @@
 ---
-layout: default
-title: Business Domain
-parent: Domain Analysis
+title: Business domain
+parent: Domain analysis
+has_children: false
 nav_order: 1
 ---
 ## Table of contents

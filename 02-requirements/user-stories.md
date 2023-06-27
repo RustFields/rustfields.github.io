@@ -1,8 +1,8 @@
 ---
-layout: default
-title: User Stories
-nav_order: 1
-parent: Requirements
+title: User stories
+parent: Requirements 
+has_children: false
+nav_order: 3
 ---
 # User Stories
 

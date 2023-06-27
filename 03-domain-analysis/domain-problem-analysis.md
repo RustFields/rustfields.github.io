@@ -1,7 +1,7 @@
 ---
-layout: default
 title: Domain Problem Analysis
 parent: Domain Analysis
+has_children: false
 nav_order: 2
 ---
 ## Table of contents

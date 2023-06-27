@@ -1,8 +1,8 @@
 ---
-layout: default
-title: Requirements Breakdown Structure
+title: Requirements breakdown structure
+parent: Requirements 
+has_children: false
 nav_order: 1
-parent: Requirements
 ---
 
 # Requirements Breakdown Structure
