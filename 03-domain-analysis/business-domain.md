@@ -8,9 +8,10 @@ nav_order: 1
 # Business Domain
 
 ## Computational Fields & Field Calculus
-A **Computational Field** is a function mapping a set of devices distributed over a network to a structured value. Such fields are aggregate-level distributed data structures which, due to the ongoing feedback loops that produce and maintain them, are generally robust to changes in the underlying topology (e.g., due to faults, mobility, or openness) and unexpected interactions with the external environment. They are thus useful for implementing and composing self-organizing coordination patterns to adaptively regulate the behavior of complex distributed systems.
 
-**Field Calculus** is a minimal core calculus meant to precisely capture a set of key ingredients of programming languages supporting the creation of computational fields: composition of fields, functions over fields, the evolution of fields over time, construction of fields of values from neighbors, and restriction of a field computation to a sub-region of the network.
+A **Computational Field** is a function mapping a set of devices distributed over a network to a structured value. Such fields are aggregate-level distributed data structures which, due to the ongoing feedback loops that produce and maintain them, are generally robust to changes in the underlying topology (e.g., faults, mobility, or openness) and unexpected interactions with the external environment. They are thus useful for implementing and composing self-organizing coordination patterns to adaptively regulate the behavior of complex distributed systems.
+
+**Field Calculus** is a minimal core calculus meant to precisely capture a set of key features of programming languages that support the creation of computational fields. These features include composition of fields, functions over fields, the evolution of fields over time, construction of fields of values from neighbors, and restriction of field computation to a sub-region of the network.
 
 ## Aggregate Programming
 
@@ -27,10 +28,10 @@ Aggregate Computing is based on a logical model that can be mapped diversely ont
 From a behavioral point of view, any device “continuously” interprets the aggregate program against its local context.
 
 <!-- TODO: check if this is correct -->
-* The **Context** is the input for a local computation: includes state from previous computations, sensor data, and exports from neighbours.
+* The **Context** is the input for a local computation: includes state from previous computations, sensor data, and exports from neighbors.
 
 <!-- TODO: check if this is correct -->
-* The **Export** is a tree-like data structure that contains all the information needed for coordinating with neighbours. It also contains the output of the computation.
+* The **Export** is a tree-like data structure that contains all the information needed for coordinating with neighbors. It also contains the output of the computation.
 
 * From an interactional point of view, any device continuously interacts with its neighbors to acquire and propagate context. This is what enables local activity to influence global activity and vice versa.
 
