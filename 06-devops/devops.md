@@ -2,7 +2,6 @@
 layout: default
 title: DevOps Techniques
 nav_order: 7
-permalink: /devops
 ---
 ## Table of contents
 {: .no_toc .text-delta }

@@ -3,7 +3,6 @@ layout: default
 title: Domain Problem Analysis
 parent: Domain Analysis
 nav_order: 2
-permalink: /domain-analysis/domain-problem-analysis
 ---
 ## Table of contents
 {: .no_toc .text-delta }

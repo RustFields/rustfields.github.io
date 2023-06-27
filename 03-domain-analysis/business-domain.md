@@ -3,7 +3,6 @@ layout: default
 title: Business Domain
 parent: Domain Analysis
 nav_order: 1
-permalink: /domain-analysis/business-domain
 ---
 ## Table of contents
 {: .no_toc .text-delta }
