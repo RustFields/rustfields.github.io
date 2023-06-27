@@ -7,6 +7,12 @@ nav_order: 1
 
 This website contains all the documentation produced for the `Rust Fields` project, which is brought on with a Domain Driven approach.
 
+<div align="center">
+
+![](assets/rustfields-logo.png)
+
+</div>
+
 ## Description
 
 This project was born from the willing to extend ScaFi: a Scala-based library and framework for Aggregate Programming.
