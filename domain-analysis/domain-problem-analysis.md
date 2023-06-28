@@ -7,13 +7,12 @@ nav_order: 2
 
 
 # Domain Problem Analysis
-<!-- TODO: check if this is correct -->
 
-Aggregate programming is actually only used by devices capable of running a JVM.
+Aggregate programming is only used by devices capable of running a JVM.
 However, the goal of this project is to make the field calculus available also for thin devices that lack the resources to run a JVM, such as Arduino.
 
 Given this goal, we are committed to exploring different solutions to bring aggregate programming to thin devices.
-There are various frameworks used for this purpose, such as Protelis and ScaFi.
+There are various frameworks used for this purpose, such as Alchemist and ScaFi.
 
 After a brief analysis of the two frameworks, we decided to focus on ScaFi because it is more mature and actively maintained.
 
@@ -72,12 +71,11 @@ After a brief analysis of the two frameworks, we decided to focus on ScaFi becau
 > The choice is yours.
 
 ## Project Goals
-From the interview with the stakeholders the following goal has been identified:
+From the interview with the stakeholders, the following goal has been identified:
 - Enable aggregate programming on a distributed network of heterogeneous devices.
-
-This main goal, is divided in different sub-goals:
+This main goal is divided into different sub-goals:
 - Create a ScaFi version that can run native, without needing a JVM.
-- <!--TODO perchè non usiamo scala native? per com'è scritto non c'è ragione di usare rust, trovare una spiegazione che possa essere sia quella dei thin device o altro-->
+- The native version of ScaFi must be able to run on thin devices, so the use of Scala Native is not considered.
 - Update ScaFi to the latest version of Scala.
-- Create an integration layer that allow a Scala aggregate program to be run using a native core.
-- Find a standard message format to allow the communication between distributed heterogeneous devices.
+- Create an integration layer that allows a Scala aggregate program to be run using a native core.
+- Find a standard message format to allow communication between distributed heterogeneous devices.

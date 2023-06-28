@@ -21,6 +21,7 @@ nav_order: 1
 3. Implement Context
 4. Implement Export
 5. Implement the Round VM
+6. Implement a library that allows the use of reified fields
 
 ## Integration layer between the native core and Scala
 
