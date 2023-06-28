@@ -1,0 +1,39 @@
+@startuml
+package Lang <<folder>> {
+interface LangImpl
+interface Language
+interface Builtins
+interface FieldCalculusSyntax
+interface FieldCalculusExecution
+interface FieldCalculusInterpreter
+interface BaseProgram
+interface AggregateProgram
+LangImpl -up-|> Language
+FieldCalculusSyntax -up-|> LangImpl
+FieldCalculusSyntax -up-|> Builtins
+FieldCalculusExecution -up-|> LangImpl
+BaseProgram -up-|> FieldCalculusSyntax
+BaseProgram -up-|> FieldCalculusExecution
+FieldCalculusInterpreter -up-|> FieldCalculusExecution
+FieldCalculusInterpreter -up-|> FieldCalculusSyntax
+AggregateProgram -up-|> BaseProgram
+}
+
+package VM <<folder>> {
+interface Export
+interface Context
+interface RoundVM
+interface VMStatus
+interface Path
+interface Slot
+Context -- Export
+Slot -up- Path
+Export -- Path
+Path -up- VMStatus
+Slot -up- VMStatus
+VMStatus -up- RoundVM
+Export -up- RoundVM
+Context -up- RoundVM
+}
+LangImpl -up-* RoundVM
+@enduml
