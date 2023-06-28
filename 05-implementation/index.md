@@ -44,7 +44,7 @@ pub extern "C" fn local_sense<A: 'static>(&self, sensor_id: &SensorId) -> Option
 ```
 gives the following warning:
 
-![](../assets/functions-generic-over-types-must-be-mangled-warning.png)
+![](../assets/images/functions-generic-over-types-must-be-mangled-warning.png)
 
 This problem can be resolved by duplicating the functions for each data type that is compatible with both C and Rust, which unfortunately leads to code repetition.
 
@@ -68,7 +68,7 @@ pub extern "C" fn new(context: Context) -> Self {
 ```
 gives the following warning:
 
-![](../assets/not-FFI-safe-warning.png)
+![](../assets/images/not-FFI-safe-warning.png)
 
 It was also discovered that when using `#[no_mangle]`, it is not possible to have functions with the same name. If your project contains different modules, each with its own data structures, you cannot define functions with the same name in different modules. For example, if the function `new` is used to create instances of a `struct`:
 
@@ -85,7 +85,7 @@ It was also discovered that when using `#[no_mangle]`, it is not possible to hav
 ```
 gives the following error:
 
-![](../assets/symbol-new-already-defined-error.png)
+![](../assets/images/symbol-new-already-defined-error.png)
 
 ### Rust limitations emerged upon implementing language constructs
 
