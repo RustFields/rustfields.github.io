@@ -72,19 +72,19 @@ The workflows of the various projects are presented in detail below:
 
 The workflow diagram is presented below:
 
-![](../assets/images/rufi-core-workflow.png)
+![](/assets/images/rufi-core-workflow.png)
 
 `ScaFi-core` is built using Scala and SBT. First of all, tests are performed on Ubuntu, MacOS and Windows using different versions of the JDK. If all tests pass, artifact generation with SBT is tested. If the generation of the artifacts is also successful, the release is created using Semantic Release and the artifacts are published on GitHub.
 
 The workflow diagram is presented below:
 
-![](../assets/images/scafi-core-workflow.png)
+![](/assets/images/scafi-core-workflow.png)
 
 `RuFi-core-wrapper` is built using Scala, Rust, SBT and Cargo. The workflow of this project is more complex than the previous ones, this is due to the type of dependency between the module developed in Scala and the one developed in Rust. First of all, the Rust module is tested on Ubuntu, MacOS and Windows. At the same time, the dynamic library is generated for the same platforms. This is because the Scala module depends on the native library and therefore it is not possible to test the Scala code without having the latter. If the tests pass and the native library is generated correctly, the tests are performed on the Scala module. If the Rust and Scala tests pass, artifact generation is tested. If the generation of the artifacts is successful, the release is created using Semantic Release and both the JARs and the native library are published on GitHub
 
 The workflow diagram is presented below:
 
-![](../assets/images/rufi-core-wrapper.png)
+![](/assets/images/rufi-core-wrapper.png)
 
 ### Code Quality Control
 
