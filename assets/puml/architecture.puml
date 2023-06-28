@@ -26,14 +26,14 @@ interface RoundVM
 interface VMStatus
 interface Path
 interface Slot
-Context -- Export
-Slot -up- Path
-Export -- Path
-Path -up- VMStatus
-Slot -up- VMStatus
-VMStatus -up- RoundVM
-Export -up- RoundVM
-Context -up- RoundVM
+Context ..> Export
+Slot <.up. Path
+Export ..> Path
+Path <.up. VMStatus
+Slot <.up. VMStatus
+VMStatus <.up. RoundVM
+Export <.up. RoundVM
+Context <.up. RoundVM
 }
 LangImpl -up-* RoundVM
 @enduml

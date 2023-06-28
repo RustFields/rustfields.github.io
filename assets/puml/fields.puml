@@ -1,0 +1,11 @@
+@startuml
+interface FieldCalculusSyntax
+package field <<folder>> {
+interface Defaultable
+interface Fields
+interface FieldsOp
+Fields -up-|> Defaultable
+Fields -up-* FieldCalculusSyntax
+FieldsOp -up-* Fields
+}
+@enduml
