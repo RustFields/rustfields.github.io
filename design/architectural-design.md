@@ -11,7 +11,7 @@ nav_order: 1
 The current ScaFi architecture is the following:
 
 <div align="center"> 
-    <img src="assets/scafi-architecture.png"> 
+    <img src="/assets/images/scafi-architecture.png"> 
 </div>
 
 Our project focuses on the ScaFi core.
