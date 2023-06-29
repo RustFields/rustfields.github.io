@@ -30,7 +30,7 @@ pub extern "C" fn rust_function() {
 
 }
 ```
-The Rust compiler mangles symbol names differently than what native code linkers expect. Therefore, any function that is exported from Rust to be used outside of Rust must be instructed not to be mangled by the compiler using `#[no_mangle]`. By default, functions written in Rust will use the Rust ABI, which is also not stabilized. However, when creating FFI APIs that are intended for external use, we need to instruct the compiler to use the system ABI by using extern "C".
+The Rust compiler mangles symbol names differently than native code linkers expect. Therefore, any function that is exported from Rust to be used outside of Rust must be instructed not to be mangled by the compiler using `#[no_mangle]`. By default, functions written in Rust will use the Rust ABI, which is also not stabilized. However, when creating FFI APIs that are intended for external use, we need to instruct the compiler to use the system ABI by using extern "C".
 
 It is important to note that you cannot use generics in Rust if your code needs to be interoperable with the C language.
 
