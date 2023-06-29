@@ -17,7 +17,9 @@ The current ScaFi architecture is the following:
 Our project focuses on the ScaFi core.
 The core architecture is the following:
 
-<!-- ![Diagram Image Link](../assets/puml/architecture.puml) -->
+<div align="center"> 
+    <img src="/assets/images/scafi-core-architecture.png"> 
+</div>
 
 The lang package contains the Scala DSL for aggregate programming.
 The VM package contains the execution engine of the aggregate program.
@@ -32,4 +34,6 @@ ScaFi fields is a standalone repository that contains a library to enable the us
 The library is written in Scala 3 and it is meant to be used in the ScaFi core.
 This is the architecture of the library:
 
-<!-- ![Diagram Image Link](../assets/puml/fields.puml) -->
+<div align="center"> 
+    <img src="/assets/images/fields.png"> 
+</div>
