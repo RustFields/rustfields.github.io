@@ -44,7 +44,7 @@ nav_order: 3
     </tr>
     <tr>
         <td>Context</td>
-        <td><!--CHECK - old comment -> this doesn't work a meno che non intendiamo anche i risultati del giro precedente-->An abstraction for the local computation's input. It contains the neighbours' exports, the local status of the device and the results of the previous round.</td>
+        <td>An abstraction for the local computation's input. It contains the neighbours' exports, the local status of the device and the results of the previous round.</td>
         <td>Export</td>
     </tr>
     <tr>
@@ -94,7 +94,7 @@ nav_order: 3
     </tr>
     <tr>
         <td>Nbr</td>
-        <td>It observes the value of an expression across neighbors, producing a “field of fields”.</td>
+        <td>It observes the value of an expression across neighbours, producing a “field of fields”.</td>
         <td>Language</td>
     </tr>
     <tr>
@@ -104,13 +104,17 @@ nav_order: 3
     </tr>
     <tr>
         <td>Foldhood</td>
-        <td>Aggregates the results of the neighbor computation.<!--TODO secondo lui è un'invenzione secca di scafi, un modo per estrarre un valore da un field, dentro scafi fa una cosa strana, ovvero un'esecuzione proiettata di ogni cosa che viene messa dentro. --></td>
+        <td>Aggregates the results of the neighbour computation.</td>
         <td>Language</td>
     </tr>
     <tr>
         <td>Branch</td>
-        <td>Partition the domain into two subspaces that do not interact with each others.</td>
+        <td>Partition the domain into two subspaces that do not interact with each other.</td>
         <td>Language</td>
+    </tr>
+    <tr>
+        <td>Alignment</td>
+        <td>Two devices are said to be aligned if they have evaluated the same expression and belong to the same domain.</td>
     </tr>
     <tr>
         <td>Local ID</td>
@@ -123,26 +127,14 @@ nav_order: 3
         <td>Sensor, Device</td>
     </tr>
     <tr>
-        <td>Exchange TODO</td>
+        <td>Exchange</td>
         <td>The exchange construct handles neighbour-to-neighbour propagation of partial accumulates.
         <!--TODO exchange pensa che non si possa implementare se non reifichiamo i fields || OPERAZIONCINA spazio temporale dove tu puoi manipolare la patch di spazio tempo - ANISOTROPICO --></td>
         <td>Language</td>
     </tr>
     <tr>
-        <td>Share TODO</td>
-        <td>Isotropic</td>
+        <td>Share</td>
+        <td>captures the space-time nature of field computation through observation of neighbours’ values, reduction to a single local value and updating and sharing to neighbours of a local variable</td>
         <td></td>
     </tr>
 </table>
-
-
-<!--TODO non c'è nulla per pilotare gli attuatori, che crede non siano nemmeno modellati in scafi - come scriviamo su un file?-->
-<!-- abbiamo qualcosa per raccogliere i side effect? -->
-<!-- possiamo usare il concetto di senso-attuatore o dividerli, se abbiamo dei sens-att fa strano che ci siano dei sensori che non fanno attuazione-->
-<!-- sicuramente ad un certo punto dovremmo avere qualcosa in grado di estrarre da un field, si potrebbero fare delle funzioni che restituiscono un field. concetto di riuso di funzioni, ereditato da scala-->
-<!-- fermiamoci al brancing-->
-<!--TODO manca l'allineamento, perchè da branch partizioniamo in 2 sottospazi, è riconducibile perchè basta fare una catena di if, si potrebbe allineare in maniera arbitraria anche se qui nessun blocco lo sfrutta -->
-<!-- con funzioni intende sia lambda che da field a field, (anche se non ha il nome è sempre una funzione) se usiamo quello che esiste è una reifica dei field, oppure decidiamo che le funzioni non possono restituire field-->
-<!-- la share senza field reificati è come se si portasse dietro una nuova versione di nbr-->
-<!--TODO REIFICARE I FIELDS-->
-<!-- se la rep è temporale || share isotropico -->
