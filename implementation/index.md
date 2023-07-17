@@ -87,6 +87,13 @@ gives the following error:
 
 ![](/assets/images/symbol-new-already-defined-error.png)
 
+As for the interoperability of Scala Native with C data structures, this is supported for data structures of limited complexity:
+
+```c
+struct { int x, y; }*
+```
+Scala Native lacks binding capabilities for data structures more complex than the one listed above.
+
 ### Rust limitations emerged upon implementing language constructs
 
 During the development of a minimal Field Calculus core in Rust, an unresolved issue surfaced that persists to this day.
