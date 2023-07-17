@@ -14,7 +14,7 @@ nav_order: 3
     </tr>
     <tr>
         <td>Aggregate Program</td>
-        <td>Specification for a collective behaviour that needs to be achieved.</td>
+        <td>Specification for a collective behavior that needs to be achieved.</td>
         <td>Language</td>
     </tr>
     <tr>
@@ -34,7 +34,7 @@ nav_order: 3
     </tr>
     <tr>
         <td>Round</td>
-        <td>Correspond to a local computation in a device. Create the context, evaluate the aggregate program and share the exports to the neighbourhood.</td>
+        <td>Correspond to a local computation in a device. Create the context, evaluate the aggregate program and share the exports to the neighborhood.</td>
         <td>VM</td>
     </tr>
     <tr>
@@ -44,12 +44,12 @@ nav_order: 3
     </tr>
     <tr>
         <td>Context</td>
-        <td>An abstraction for the local computation's input. It contains the neighbours' exports, the local status of the device and the results of the previous round.</td>
+        <td>An abstraction for the local computation's input. It contains the neighbors' exports, the local status of the device and the results of the previous round.</td>
         <td>Export</td>
     </tr>
     <tr>
         <td>Export</td>
-        <td>A tree-like data structure that contains all the information needed for coordinating with neighbours and the output of the computation.</td>
+        <td>A tree-like data structure that contains all the information needed for coordinating with neighbors and the output of the computation.</td>
         <td>AST</td>
     </tr>
     <tr>
@@ -60,7 +60,7 @@ nav_order: 3
     <tr>
         <td>Device</td>
         <td>A singular entity that executes the aggregate program. Also called: nodes or agents.</td>
-        <td>Neighbour</td>
+        <td>neighbor</td>
     </tr>
     <tr>
         <td>Neighboring</td>
@@ -94,7 +94,7 @@ nav_order: 3
     </tr>
     <tr>
         <td>Nbr</td>
-        <td>It observes the value of an expression across neighbours, producing a “field of fields”.</td>
+        <td>It observes the value of an expression across neighbors, producing a “field of fields”.</td>
         <td>Language</td>
     </tr>
     <tr>
@@ -104,7 +104,7 @@ nav_order: 3
     </tr>
     <tr>
         <td>Foldhood</td>
-        <td>Aggregates the results of the neighbour computation.</td>
+        <td>Aggregates the results of the neighbor computation.</td>
         <td>Language</td>
     </tr>
     <tr>
@@ -128,13 +128,13 @@ nav_order: 3
     </tr>
     <tr>
         <td>Exchange</td>
-        <td>The exchange construct handles neighbour-to-neighbour propagation of partial accumulates.
+        <td>The exchange construct handles neighbor-to-neighbor propagation of partial accumulates.
         <!--TODO exchange pensa che non si possa implementare se non reifichiamo i fields || OPERAZIONCINA spazio temporale dove tu puoi manipolare la patch di spazio tempo - ANISOTROPICO --></td>
         <td>Language</td>
     </tr>
     <tr>
         <td>Share</td>
-        <td>captures the space-time nature of field computation through observation of neighbours’ values, reduction to a single local value and updating and sharing to neighbours of a local variable</td>
+        <td>captures the space-time nature of field computation through observation of neighbors’ values, reduction to a single local value and updating and sharing to neighbors of a local variable</td>
         <td></td>
     </tr>
 </table>

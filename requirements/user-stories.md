@@ -8,11 +8,11 @@ nav_order: 3
 
 ## As a user...
 
-> ... I want to define the spatial behaviour of a network.
+> ... I want to define the spatial behavior of a network.
 
-> ... I want to define the temporal behaviour of a network.
+> ... I want to define the temporal behavior of a network.
 
-> ... I want to define the spatial-temporal behaviour of a network.
+> ... I want to define the spatial-temporal behavior of a network.
 
 > ... I want to write the aggregate program in a functional way.
 
