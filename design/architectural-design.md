@@ -26,7 +26,11 @@ The VM package contains the execution engine of the aggregate program.
 
 ## Rust architecture
 
-The Rust version architecture is...
+The RuFi architecture is the following:
+
+<div align="center"> 
+    <img src="/assets/images/rufi-core-architecture.png"> 
+</div>
 
 ## ScaFi Fields
 

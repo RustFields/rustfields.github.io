@@ -1,0 +1,16 @@
+@startuml
+component export
+component context
+component round_vm
+component vm_status
+component path
+component slot
+context ..> export
+slot <.up. path
+export ..> path
+path <.up. vm_status
+slot <.up. vm_status
+vm_status <.up. round_vm
+export <.up. round_vm
+context <.up. round_vm
+@enduml
