@@ -5,6 +5,8 @@ component round_vm
 component vm_status
 component path
 component slot
+component execution
+component lang
 context ..> export
 slot <.up. path
 export ..> path
@@ -13,4 +15,7 @@ slot <.up. vm_status
 vm_status <.up. round_vm
 export <.up. round_vm
 context <.up. round_vm
+execution ..> round_vm
+lang ..> round_vm
+lang ..> slot
 @enduml
