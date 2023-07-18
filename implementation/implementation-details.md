@@ -66,15 +66,3 @@ pub struct Export {
 
 ### Macros
 
-```rust
-#[macro_export]
-macro_rules! path {
-    ($($x:expr),*) => {{
-        let mut temp_vec = Vec::new();
-        $(
-            temp_vec.push($x);
-        )*
-        Path { slots: temp_vec }
-    }};
-}
-```
