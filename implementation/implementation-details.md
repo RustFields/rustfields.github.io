@@ -1,5 +1,5 @@
 ---
-parent: Implementation details
+title: Implementation details
 parent: Implementation
 has_children: false
 nav_order: 1
