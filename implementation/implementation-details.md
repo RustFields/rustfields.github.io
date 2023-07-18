@@ -9,7 +9,7 @@ nav_order: 1
 
 ## Rust features
 
-## Ownership & borrowing
+### Ownership & borrowing
 
 ```rust
 pub fn neighbor(&self) -> &Option<i32> {
@@ -17,7 +17,7 @@ pub fn neighbor(&self) -> &Option<i32> {
 }
 ```
 
-## Function overload
+### Function overload
 
 ```rust
 pub fn new() -> Self {
@@ -48,7 +48,7 @@ impl From<Vec<Slot>> for Path {
 
 ```
 
-## Lifetimes
+### Lifetimes
 
 ```rust
 pub fn register_root<A: 'static + Copy>(&mut self, v: A) {
@@ -56,7 +56,7 @@ pub fn register_root<A: 'static + Copy>(&mut self, v: A) {
 }
 ```
 
-## Smart pointers
+### Smart pointers
 
 ```rust
 pub struct Export {
@@ -64,7 +64,7 @@ pub struct Export {
 }
 ```
 
-## Macros
+### Macros
 
 ```rust
 #[macro_export]
