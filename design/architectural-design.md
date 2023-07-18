@@ -6,7 +6,7 @@ nav_order: 1
 ---
 # Architectural design
 
-## ScaFi architecture
+## ScaFi-core
 
 The current ScaFi architecture is the following:
 
@@ -24,7 +24,7 @@ The core architecture is the following:
 The lang package contains the Scala DSL for aggregate programming.
 The VM package contains the execution engine of the aggregate program.
 
-## Rust architecture
+## RuFi-core
 
 The RuFi architecture is the following:
 
@@ -32,7 +32,7 @@ The RuFi architecture is the following:
     <img src="/assets/images/rufi-core-architecture.png"> 
 </div>
 
-## ScaFi Fields
+## ScaFi-fields
 
 ScaFi fields is a standalone repository that contains a library to enable the use of reified fields in ScaFi.
 The library is written in Scala 3 and it is meant to be used in the ScaFi core.
