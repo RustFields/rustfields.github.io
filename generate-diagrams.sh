@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 DIAGRAMS_DIR=./assets/puml
 IMAGES_DIR=./assets/images
@@ -9,3 +9,5 @@ for DIAGRAM in ${DIAGRAMS_DIR}/* ; do
     java -jar ./plantuml-1.2023.10.jar ${DIAGRAM}
 done
 mv ${DIAGRAMS_DIR}/*.png ${IMAGES_DIR}
+
+rm ./plantuml-1.2023.10.jar
