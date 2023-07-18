@@ -1,0 +1,14 @@
+@startuml
+package RuFiCore <<folder>> {
+    interface round_vm
+}
+package Native <<folder>> {
+    interface round_vm_wrapper
+}
+package Core <<folder>> {
+ interface Binding
+}
+
+round_vm_wrapper ..> round_vm
+Binding ..> round_vm_wrapper
+@enduml

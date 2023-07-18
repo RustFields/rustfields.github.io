@@ -41,3 +41,9 @@ This is the architecture of the library:
 <div align="center"> 
     <img src="/assets/images/fields.png"> 
 </div>
+
+## RuFi-core-wrapper
+
+<div align="center"> 
+    <img src="/assets/images/rufi-core-wrapper-architecture.png"> 
+</div>
