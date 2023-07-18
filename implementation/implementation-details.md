@@ -66,3 +66,6 @@ pub struct Export {
 
 ### Macros
 
+<div align="center"> 
+    <img src="/assets/images/rust-macro.png"> 
+</div>
