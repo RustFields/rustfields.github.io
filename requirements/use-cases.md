@@ -44,7 +44,7 @@ One of the common problems in managing complex enterprise services is that there
 
 Aggregate programming can be used to automate this process by allowing developers to define groups of services as a single unit. This makes it easy to track the state of all services in a group and to coordinate their shutdown and restart.
 
-For example, in the case of an enterprise network for a small manufacturing and supply company, the services could be grouped into two aggregates: the database aggregate and the web application aggregate. If the database aggregate fails, the aggregate programming framework could automatically shut down all of the services in the database aggregate, and then restart them in the correct order once the database is back up and running.
+For example, in the case of an enterprise network for a small manufacturing and supply company, the services could be grouped into two aggregates: the database aggregate and the web application aggregate. If the database aggregate fails, the aggregate programming framework could automatically shut down all of the services in the database aggregate and then restart them in the correct order once the database is back up and running.
 
 This approach can significantly simplify the process of managing complex enterprise services, and it can help to ensure that services are brought up and down in a consistent and orderly manner.
 
@@ -52,5 +52,5 @@ Here are some of the benefits of using aggregate programming for managing comple
 
 Simplified service management: Aggregate programming can make it easier to track the state of all services in a group and to coordinate their shutdown and restart.
 Improved reliability: Aggregate programming can help to ensure that services are brought up and down in a consistent and orderly manner, which can reduce the risk of service failures.
-Increased scalability: Aggregate programming can be used to manage large numbers of services, which can be helpful for scaling up enterprise applications.
+Increased scalability: Aggregate programming can be used to manage large numbers of services, which can help scale up enterprise applications.
 Overall, aggregate programming is a powerful tool that can be used to simplify and improve the management of complex enterprise services.
