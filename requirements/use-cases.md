@@ -50,7 +50,7 @@ This approach can significantly simplify the process of managing complex enterpr
 
 Here are some of the benefits of using aggregate programming for managing complex enterprise services:
 
-Simplified service management: Aggregate programming can make it easier to track the state of all services in a group and coordinate their shutdown and restart.
-Improved reliability: Aggregate programming can help to ensure that services are brought up and down in a consistent and orderly manner, which can reduce the risk of service failures.
-Increased scalability: Aggregate programming can be used to manage large numbers of services, which can help scale up enterprise applications.
+- Simplified service management: Aggregate programming can make it easier to track the state of all services in a group and coordinate their shutdown and restart.
+- Improved reliability: Aggregate programming can help to ensure that services are brought up and down in a consistent and orderly manner, which can reduce the risk of service failures.
+- Increased scalability: Aggregate programming can be used to manage large numbers of services, which can help scale up enterprise applications.
 Overall, aggregate programming is a powerful tool that can be used to simplify and improve the management of complex enterprise services.
