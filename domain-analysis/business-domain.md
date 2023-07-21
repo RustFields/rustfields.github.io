@@ -1,6 +1,6 @@
 ---
 title: Business domain
-parent: Domain analysis
+parent: Domain Analysis
 has_children: false
 nav_order: 1
 ---
