@@ -45,7 +45,7 @@ def branch[A](cond: => Boolean)(thn: => A)(els: => A): A
 ```
 
 #### Sense
-Sence obtains the value of a local sensor.
+Sense obtains the value of a local sensor.
 
 ```scala
 def sense[A](name: Sensor): A
