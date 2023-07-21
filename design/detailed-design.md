@@ -66,6 +66,8 @@ The execution of an aggregate program uses the `VM`, which is updated through `r
 The field calculus take advantage of `Builtins` that extends the Language structure with additional mechanisms. 
 
 ### Builtins
+Builtins are made to simplify some repetitive mechanisms that could take to errors.
+
 Here are some example of builtins implemented:
 
 ```scala
