@@ -5,6 +5,7 @@ has_children: false
 nav_order: 2
 ---
 # Detailed design
+In this section, we will show the most critical design choices made that lead to the realization of the framework as it currently is.
 
 ## Scafi-core
 
