@@ -10,8 +10,7 @@ In this section, we will show the most critical design choices made that lead to
 ## Scafi-core
 
 ### Language
-
-It is all based on the `Language` trait, composed by the main constructs, that are the followings.
+We decided to keep the core language constructs under a common `Language` trait that can be mixed in with other traits in order to make possible to use the core constructs inside code. The core language constructs are the following:
 
 #### Rep
 Rep captures state evolution, starting from an `init` value that is updated each round through `fun`.
@@ -25,66 +24,36 @@ Nbr captures communication, of the value computed from its `expr` expression, wi
 ```scala 
 def nbr[A](expr: => A): A
 ``` 
-#### Mid
-Mid is a built-in sensor providing the identifier of devices;
-
-```scala
-def mid(): Int
-```
 
 #### Foldhood 
-Foldhood supports neighborhood data aggregation, through a standard “fold” of functional programming with initial value `init`, aggregation function `aggr`, and the set of values to fold over obtained by evaluating `expr` against all neighbors;
+Foldhood supports neighborhood data aggregation, through a standard, FP-oriented “fold” with initial value `init`, aggregation function `aggr`, and the set of values to fold over obtained by evaluating `expr` against all neighbors;
 
 ```scala
 def foldhood[A](init: => A)(aggr: (A, A) => A)(expr: => A): A
 ```
 
 #### Branch
-Which partitions the domain into two subspaces that do not interact with each other.
+This function partitions the domain into two subspaces that do not interact with each other, based on the `cond` expression.
 ```scala
 def branch[A](cond: => Boolean)(thn: => A)(els: => A): A
 ```
 
-#### Sense
-Sense obtains the value of a local sensor.
+By combining these constructs, higher-level functions can be defined to capture increasingly complex collective behavior, called `Builtins`.
+
+## Aggregate Program Execution
+The execution of an aggregate program uses a `VM`, which is updated through `rounds` of field calculus execution.
+
+### Field Calculus Execution
+The concept of field calculus execution corresponds to a function from the local device `Context` to an `Export` that contains several informations regarding the execution of the aggregate program. 
+The execution is carried over in rounds by repeatedly updating the local context, calling the `round` function and producing the local export that, alingside the neighbouring exports will form the context for the next round of computation. Here's the signature of the round function:
 
 ```scala
-def sense[A](name: Sensor): A
+def round(c: Context, e: => Any = main()): Export
 ```
-#### NbrVar
-NbrVar obtains the value of the neighbor's sensor.
-
-```scala
-def nbrVar[A](name: Sensor): A
-```
-By combining these constructs, higher-level functions can be defined to capture increasingly complex collective behavior.
-
-<!--Those constructs are used within the Field Calculus to create and execute an Aggregate Program.-->   
-
-## Aggregate Program
-The execution of an aggregate program uses the `VM`, which is updated through `rounds` of the field calculus.
-
-The field calculus takes advantage of `Builtins` that extends the Language structure with additional mechanisms. 
-
-### Builtins
-Builtins are made to simplify some repetitive mechanisms that could take to errors.
-
-Here are some examples of builtins implemented:
-
-```scala
-def mux[A](cond: Boolean)(th: A)(el: A): A
-```
-Mux evaluates the condition given and returns `th` if the condition is satisfied, `el` otherwise.
-
-```scala
-def maxHood[A](expr: => A)(using of: Bounded[A]): A
-```
-MaxHood applies a `foldhood` to the bottom value of the bound given, with the aggregation function that is the max between two given values and the expression passed as input.
+This function takes the starting local context and the aggregate program in order to produce the export.Inside the `FieldCalculusExecution` trait we also define an overridable main function were the aggregate program's code can be written.
 
 ### VMstatus
-VMStatus models the status of the virtual machine used for the evaluation of the constructs. It acts like a stack.
-
-For example, it is composed by a `Path` of the computation, the `index` of the current `Slot`, the id of the current `neighbor` and other functions pertinent to the constructs of the language. 
+VMStatus models the status of the virtual machine used for the evaluation of the constructs. It acts like a stack, containing the `Path` of the computation, the `index` of the current `Slot` and the id of the current `neighbor`. 
 
 ### RoundVM
 RoundVM evaluates the aggregate program at each local computation in a device. When done, it shares its exports to the neighbors in order to be aligned with each others.
@@ -92,9 +61,9 @@ RoundVM evaluates the aggregate program at each local computation in a device. W
 This module works with `Context` and `Export` modules.
 
 ### Context
-Context models the context of a device,
+Context models the context of a local computation,
 meaning that it has the ID of the device,
-all the exports available to it and various functions to get values of the neighbors.
+all the exports available to it and various functions to get neighbouring values.
 
 ### Export - Path - Slot
 Export is a data structure that contains the information needed for the coordination with the neighbors.
@@ -105,58 +74,76 @@ A `Slot` can represent primitives like `nbr`, `rep`, `foldhood` and `branch`.
 It also has methods to create paths and associate values to them.
 
 ## Rufi-core
-For what concerns the module of `Rufi-core`, the main execution operates in the same way as the `Scafi-core` module. However, there are few differences between them, starting from the language.
+The design of the `Rufi-core` project resembles the one adopted in the `Scafi-core` module. However, the differences between the Rust language and Scala lead to some notable design differences, that are here discussed. Please note that theese differences have arisen from the limitations that the Rust compiler imposes to the developer and will be discussed in detail inside the [Implementation Issues](../implementation/implementation-issues.md) section.
 
 ### Language
-As a result of a meticulous analysis,
-the `Language` is now composed by fewer constructs with the same meaning as in `Scafi-core`,
-which are the followings.
+The `Language` trait is now a simple rust module that contains the core language constructs such as Rep, Nbr, Foldhood and Branch.
 
-#### Nbr
+```rust
+pub mod lang {
+    pub fn rep<A>(...)
+    pub fn nbr<A>(...)
+    pub fn foldhood<A>(...)
+    pub fn branch<A>(...)
+}
+```
+
+However, theese functions have some differences between the Scala counterparts, mainly they take a `RoundVM` as parameter and return a tuple (RoundVM, A) instead of a simple A value.
+For example, here's the nbr function signature:
 
 ```rust
 pub fn nbr<A: Copy + 'static>(mut vm: RoundVM, expr: impl Fn(RoundVM) -> (RoundVM,A)) -> (RoundVM, A) 
 ```
 
-#### Rep
-
-```rust
-pub fn rep<A: Copy + 'static>(mut vm: RoundVM, init: impl Fn() -> A, fun: impl Fn(RoundVM, A) -> (RoundVM, A)) -> (RoundVM, A)
-```
-
-#### Foldhood
-
-```rust
-pub fn foldhood<A: Copy + 'static>(mut vm: RoundVM, init: impl Fn() -> A, aggr: impl Fn(A, A) -> A, expr: impl Fn(RoundVM) -> (RoundVM, A)) -> (RoundVM, A)
-```
-
-#### Branch
-
-```rust
-pub fn branch<A: Copy + 'static>(mut vm: RoundVM, cond: impl Fn() -> bool, thn: impl Fn(RoundVM) -> (RoundVM, A), els: impl Fn(RoundVM) -> (RoundVM, A)) -> (RoundVM, A)
-```
-
-
-As you can see, the main concept is the same, the differences are of course the not very idiomatic syntax, and that every function needs to take the `RoundVM` as a mutable parameter and as a consequence, the functions must pass also the `RoundVM` status back to the caller.
-This happens because of some limitations in Rust's variable borrowing which will be discussed later inside the [Implementation Issues](../implementation/implementation-issues.md) section.
-
-As a language limitation to our application,
-it must be specified also the `Copy` trait and the `'static` lifetime to our generic parameter,
-that will be explained inside the [Implementation Details](../implementation/implementation-details.md) section..
-
-Our analysis has resulted in moving some constructs that were in the `Language` trait of `Scafi-core` somewhere else. 
-
-//TODO FORSE HO SBAGLIATO
-For example, the `mid` function now has its own module named `SensorId` or the `sense` function that has not been implemented.
-
 ## Execution 
-The execution is still based on rounds of `RoundVM` and the consequent structure and modules are the same as in `Scafi-core`.
+The execution is still based around rounds of `RoundVM` and the `round` function: 
+
+```rust
+fn round<A, P>(vm: RoundVM, program: P) -> (RoundVM, A)
+where 
+    P: Fn(RoundVM) -> (RoundVM, A) 
+```
+
+However, we can see that Context and Export are now substituted by a RoundVM. Also, the export's root value is returned in a tuple alongside the resulting RoundVM.
 
 ## RoundVM
 
 Due to other language limitations to this application,
 the `nest` function from `Scafi-core` has been divided in `nest-in`,
-`nest-write` and `nest-out`, for the reason of the borrowing limitations.
+`nest-write` and `nest-out` functions.
+
+```rust
+/// Pushes the slot in the current Path.
+pub fn nest_in(slot: Slot)
+```
+```rust
+/// Checks if the value needs to be written inside the Export and returns it.
+ pub fn nest_write<A>(write: bool, value: A) -> A
+```
+```rust
+/// Checks if the status' index needs to be increased, then pops the current status.
+ pub fn nest_out(inc: bool)
+```
+
+Here is an example of how a language construct is implemented using theese functions:
+
+```rust
+pub fn nbr<A>(vm: RoundVM, expr: F) -> (RoundVM, A) {
+    vm.nest_in(Nbr(...));
+    let (vm_, nbr_val) = ... // nbr's logic that also uses expr
+    let result = vm_.nest_write(nbr_val, ...);
+    vm_.nest_out(...);
+    (vm_, result)
+}
+```
+
+Also, the `locally` function has been taken outside the RoundVM's associate functions and is now a private function that is used inside the constructs in the `lang` module. Here is the updated locally signature:
+
+```rust
+fn locally<A, F>(mut vm: RoundVM, expr: F) -> (RoundVM, A)
+where
+    F: Fn(RoundVM) -> (RoundVM, A) 
+```
 
 ## Scafi-fields
 
