@@ -107,7 +107,6 @@ where
 However, we can see that Context and Export are now substituted by a RoundVM. Also, the export's root value is returned in a tuple alongside the resulting RoundVM.
 
 ## RoundVM
-
 Due to other language limitations to this application,
 the `nest` function from `Scafi-core` has been divided in `nest-in`,
 `nest-write` and `nest-out` functions.
@@ -146,36 +145,29 @@ where
 ```
 
 ## Scafi-fields
+The `Scafi-fields` module contains a library to enable the use of reified fields inside aggregate programs. It's main purpose is to enable explicit manipulation of fields through the use of language constructs, monadic operations and comprehensions.
 
-The `Scafi-fields` module contains a library to enable the use of reified fields in the `Scafi-core`. 
-Note that reified fields have only been implemented in Scala and not in Rust, so they cannot be used yet in `Rufi-core` applications.
+A field maps devices to values of a generic type, if a device is not in the map, a default value is used. Here's a simple representation of a Field of A's:
 
-The constructs with reified fields are noted with an `f` appended to the name of the construct, their signature also might be different, 
-because most of the time it is returned a Field or passed it as parameter. 
+```scala
+case class Field[A](getMap: Map[Int, A], default: A)
+```
 
-Field calculus uses `Fields` trait with `FieldOps` that are operations applied to Fields.
+The Field is meant to represent the local knowledge of the device about the neighbouring values, much like the Context data structure.
+
 
 ### Fields
+The `Fields` trait defines the concept of `Field`, alongside some useful functions and factories. It also includes the instance of `cats`'`Monad` type class for Field, in order to enable special syntax and manipulation inside for-comprehensions. This trait can be mixed with other traits to enable field manipulation inside functions, like we do inside the `FieldLanguage` trait.
 
-A field is a map from device ids to values of a generic type, if a device is not in the map, the default value is used.
+### Field Language
+This trait defines the core language constructs for the Field Calculus with reified fields. Theese constructs are the same as the regular `ScaFi-core` ones, but they differ in that they also use fields as values.
 
-Some methods that use or create Fields are the following:
-
-```scala
-//Create a Field with a single value for the current device.
-def fromSelfValue[A](a: A): Field[A] 
-```
+### Field Language Execution
+The 'fields' extension of `ScaFi-core` is meant as a simple extension of the syntax and functionalities that are available inside a regular aggregate program. This means that the core execution architecture is the one defined inside the core module of ScaFi. To enable the execution of an aggregate program with reified fields, the FieldLanguageProgram trait has been introduced:
 
 ```scala
-//Dynamically creates a Field from a provided expression.
-def fromExpression[A](default: => A)(expr: => A): Field[A]
+trait FieldLanguageProgram extends AggregateProgram with FieldLanguageImpl
 ```
-
-### Language
-
-`FieldLanguage` implements said constructs with the logic of reified fields.
-
-## Rufi-core-wrapper
 
 ## Tests
 As scala's standard on testing, there is a package in every scala project that contains unit tests and test with the functions applied as a simulation.
