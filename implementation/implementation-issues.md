@@ -194,3 +194,155 @@ would allow fundamental constructs to be defined as pure functions and not metho
 as no problematic borrowing is performed.
 
 It is important to note that currently, there doesn't appear to be a dependency injection framework in Rust capable of implementing the aforementioned code. However, it might be possible to explore potential solutions using Rust's macro system. Macros can provide a mechanism for code generation and abstraction, which could potentially be leveraged to address the dependency injection requirements in the code.
+
+## Foldhood implementation issues
+
+The Scala version of Foldhood is implemented as follows:
+
+```scala
+  override def foldhood[A](init: => A)(aggr: (A, A) => A)(expr: => A): A = {
+    vm.nest(FoldHood(vm.index))(write = true) {// write export always for performance reason on nesting
+      val nbrField = vm
+        .alignedNeighbours()
+        .map(id => vm.foldedEval(expr)(id).getOrElse(vm.locally(init)))
+      vm.isolate(nbrField.fold(vm.locally(init))((x, y) => aggr(x, y)))
+    }
+  }
+```
+
+It's not possible to write  the same code in Rust, due to limitations of the language. The function below is the first implementation of the Foldhood in Rust:
+
+```rust
+pub fn foldhood<A: Copy + 'static>(mut vm: RoundVM, init: impl Fn() -> A, aggr: impl Fn(A, A) -> A, expr: impl Fn(RoundVM) -> (RoundVM, A)) -> (RoundVM, A) {
+    vm.nest_in(FoldHood(vm.index().clone()));
+    let nbrs = vm.aligned_neighbours().clone();
+    let (mut vm_, preval) = expr(vm);
+    let nbrfield =
+        nbrs.iter()
+            .map(|id| {
+                vm_.folded_eval(|| preval, id.clone()).unwrap_or(init())
+            });
+    let val = nbrfield.fold(init(), |x, y| aggr(x, y));
+    let res = vm_.nest_write(true, val);
+    vm_.nest_out(true);
+    (vm_, res)
+}
+```
+
+The first thing to note is that the type of the `expr` parameter has been changed to `Fn(RoundVM) -> (RoundVM, A)`. This is due to the fact that each language construct takes a VM as a parameter, therefore the expression can't be a closure because otherwise no language construct could be called inside the expression.
+
+The nest function has been split in three function: `nest_in` `nest_write` and `nest_out`.
+
+In scala, the `nest_write` function for the foldhood contruct is the following:
+
+```scala
+exportData.get(status.path).getOrElse(exportData.put(status.path, expr))
+```
+
+Where the `expr` parameter is the following expression:
+
+```scala
+    val nbrField = vm
+        .alignedNeighbours()
+        .map(id => vm.foldedEval(expr)(id).getOrElse(vm.locally(init)))
+    vm.isolate(nbrField.fold(vm.locally(init))((x, y) => aggr(x, y)))
+```
+
+The `expr` parameter is a closure that returns a value of type `A`. In Rust, the `expr` parameter is not a closure, but a function that takes a VM as a parameter and returns a tuple of type `(RoundVM, A`. This means that `expr` can be used as input parameter for the `nest_write` construct.
+
+The first solution adopted is to pre-compute alle the value, aggregate them, and call the nest_write function with the result value of the aggregation.
+
+By testing the foldhood, an issue has been found in the following lines of code:
+
+```rust
+let (mut vm_, preval) = expr(vm);
+    let nbrfield =
+        nbrs.iter()
+            .map(|id| {
+                vm_.folded_eval(|| preval, id.clone()).unwrap_or(init())
+            });
+```
+
+The folded_eval computes the value of each device in the neighbor list. In Scala it is called by passing the expression, which is a closure, as a parameter. This can't be done in Rust as a borrowing error occurs. The solution adopted is to, again, pre compute the value of the expression and pass it as a parameter to the folded_eval function.
+This is of course a problem, because each device will have the same value.
+
+Another problem is that the `expr` requires a VM as a parameter and returns a new VM, so it's not possible to call it inside the map.
+
+The solution adopted is to create a recursive function that for each device compute it's value and then call the function again with the new VM, until all the devices values have been computed.
+
+This is the updated code:
+
+```rust
+let (vm_, local_init) = locally(vm, |vm_| (vm_, init()));
+    let temp_vec: Vec<A> = Vec::new();
+    let (mut vm__, nbrs_vec) = nbrs_computation(vm_, expr, temp_vec, nbrs, local_init);
+    let val = nbrs_vec.iter().fold(local_init, |x, y| aggr(x, y.clone()));
+```
+
+Where the `nbrs_computation` function is the following:
+
+```rust
+fn nbrs_computation<A: Copy + 'static>(vm: RoundVM, expr: impl Fn(RoundVM) -> (RoundVM, A), mut tmp: Vec<A>, mut ids: Vec<i32>, init: A) -> (RoundVM, Vec<A>) {
+    if ids.len() == 0 {
+        return (vm, tmp);
+    } else {
+        let current_id = ids.pop();
+        let (vm_, res, expr_) = folded_eval(vm, expr, current_id);
+        tmp.push(res.unwrap_or(init).clone());
+        nbrs_computation(vm_, expr_, tmp, ids, init)
+    }
+}
+```
+
+To enable this solution the `folded_eval` function has been modified to return the new VM and the new expression to be used in the next iteration of the recursive function.
+This is the new `folded_eval` function:
+
+```rust
+fn folded_eval<A: Copy + 'static, F>(mut vm: RoundVM, expr: F, id: Option<i32>) -> (RoundVM, Option<A>, F)
+    where
+        F: Fn(RoundVM) -> (RoundVM, A),
+{
+    vm.status = vm.status.push();
+    vm.status = vm.status.fold_into(id);
+    let (mut vm_, res) = expr(vm);
+    vm_.status = vm_.status.pop();
+    (vm_, Some(res), expr)
+}
+```
+
+By running the following test an error occured:
+
+```rust
+#[test]
+fn foldhood() {
+    // Export of device 2: Export(/ -> "1", FoldHood(0) -> "1", FoldHood(0) / Nbr(0) -> 4)
+    let export_dev_2 = export!((path!(), 1), (path!(FoldHood(0)), 1), (path!(Nbr(0), FoldHood(0)), 4));
+    // Export of device 4: Export(/ -> "3", FoldHood(0) -> "3")
+    let export_dev_4 = export!((path!(), 3), (path!(FoldHood(0)), 3));
+    let mut exports: HashMap<i32, Export> = HashMap::new();
+    exports.insert(2, export_dev_2);
+    exports.insert(4, export_dev_4);
+    let context = Context::new(0, Default::default(), Default::default(), exports);
+    // Program: foldhood(-5)(_ + _)(nbr(2))
+    let program = |vm| foldhood(vm,
+                                || -5,
+                                | a, b| (a + b),
+                                |vm1| nbr(vm1, |vm2| (vm2, 2)));
+    let result = round(init_with_ctx(context), program);
+    assert_eq!(-4, result.1);
+    }
+```
+
+This is the error thrown:
+
+```bash
+called `Option::unwrap()` on a `None` value
+```
+
+This error is thrown inside the `Nbr()` construct. As can be seen in the test code, nbr is called inside the foldhood and is part of the expression carried around as `expr()` parameter.
+
+The problem here is that one of the neighbors is not aligned and therefore, when Nbr tries to retrieve the value of the neighbor, it returns None. In Scala this error is catched with a `try-catch` construct, but in Rust this is not possible.
+
+A possible solution is to change the `nbr` signature to return an `Option<A>` but this is of course not feasible.
+
+We didn't find a solution to this problem before we ran out of hours to spend on the project. The tests that are failing due to this problems are left in the code base, but they are commented out.
