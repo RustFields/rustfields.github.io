@@ -71,7 +71,7 @@ After a brief analysis of the two frameworks, we decided to focus on ScaFi becau
 > The choice is yours.
 
 ## Project Goals
-From the interview with the stakeholders, the following goal has been identified:
+From the interview with the stakeholders, the following goals have been identified:
 - Enable aggregate programming on a distributed network of heterogeneous devices.
 This main goal is divided into different sub-goals:
 - Create a ScaFi version that can run native, without needing a JVM.
