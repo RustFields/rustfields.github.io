@@ -52,7 +52,7 @@ you will get the following error:
 ```
 error[E0592]: duplicate definitions with name `new`
 ```
-A possible solution for this problem is to remove the second constructor and implement the `From` trait. This is a very simple mechanism for converting between several types:
+A possible solution for this problem is to remove the second constructor and implement the `From` trait. This is a very simple mechanism to convert between different types:
 
 ```rust
 impl From<Vec<Slot>> for Path {
