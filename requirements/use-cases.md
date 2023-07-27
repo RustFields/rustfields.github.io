@@ -13,7 +13,7 @@ This trend toward collective computing has led to several challenges for program
 
 Aggregate programming is an emerging approach to programming that addresses these challenges. Aggregate programming treats a group of devices as a single unit, which simplifies the design, creation, and maintenance of complex distributed systems. This approach can help to improve the performance, reliability, and scalability of distributed systems.
 
-Here are some of the benefits of aggregate programming:
+Here are some benefits of aggregate programming:
 
 - It simplifies the design of complex distributed systems by abstracting away the details of individual devices.
 - It improves the performance of distributed systems by reducing the amount of communication between devices.
@@ -44,7 +44,7 @@ One of the common problems in managing complex enterprise services is that there
 
 Aggregate programming can be used to automate this process by allowing developers to define groups of services as a single unit. This makes it easy to track the state of all services in a group and to coordinate their shutdown and restart.
 
-For example, in the case of an enterprise network for a small manufacturing and supply company, the services could be grouped into two aggregates: the database aggregate and the web application aggregate. If the database aggregate fails, the aggregate programming framework could automatically shut down all of the services in the database aggregate and then restart them in the correct order once the database is back up and running.
+For example, in the case of an enterprise network for a small manufacturing and supply company, the services could be grouped into two aggregates: the database aggregate and the web application aggregate. If the database aggregate fails, the aggregate programming framework could automatically shut down all the services in the database aggregate and then restart them in the correct order once the database is back up and running.
 
 This approach can significantly simplify the process of managing complex enterprise services, and it can help to ensure that services are brought up and down in a consistent and orderly manner.
 
@@ -69,4 +69,4 @@ Overall, aggregate programming is a powerful tool that can be used to simplify a
 
 > ... I want to simulate the execution of an aggregate program.
 
-> ... I want to run the aggregate program on different types of device.
+> ... I want to run the aggregate program on different types of devices.
