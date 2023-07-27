@@ -54,7 +54,8 @@ you will get the following error:
 error[E0592]: duplicate definitions with name `new`
 ```
 
-A possible solution for this problem is to remove the second constructor and implement the `From` trait. This is a very simple mechanism to convert between different types:
+A possible solution for this problem is to remove the second constructor and implement the `From` trait. 
+This is a basic mechanism to convert between different types:
 
 ```rust
 impl From<Vec<Slot>> for Path {
@@ -99,7 +100,7 @@ pub struct Export {
 
 Why not use `Any` directly? The dyn keyword is used to highlight that calls to methods on the associated `Trait` are dynamically dispatched.
 `Box` is a smart pointer: boxes allow you to store data on the heap rather than the stack. What remains on the stack is the pointer to the heap data.
-In this case, we use `Box` because we have a type whose size can’t be known at compile time and we want to use a value of that type in a context that requires an exact size.
+In this case, we use `Box` because we have a type whose size can’t be known at compile time, and we want to use a value of that type in a context that requires an exact size.
 ### Macros
 
 Fundamentally, macros are a way of writing code that writes other code, which is known as metaprogramming.
