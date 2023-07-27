@@ -38,7 +38,7 @@ From a behavioral point of view, any device “continuously” interprets the ag
 In practice, devices sustain the aggregate computation through asynchronous sense-compute-(inter)act rounds which conceptually consist of the following steps:
 
 1. **Context update**: the device retrieves previous state, environment data (through sensors), and messages from neighbors.
-2. **Aggregate program execution**: the field computation is executed against the local context; this yields a field as result.
+2. **Aggregate program execution**: the field computation is executed against the local context; this yields a field as a result.
 3. **Action**
     1. **Export broadcasting to neighbors**: from the output, a subset of data (called an export) for neighbor coordination can be automatically derived; the export has to be broadcast to the entire neighborhood.
     2. **Execution of actuators**: the output of the program can describe a set of actions to be performed on the environment.
@@ -49,5 +49,3 @@ Aggregate programming is a macro-programming paradigm where a single program (ca
 
 The aggregate program does not explicitly refer to the execution model discussed in the previous section, i.e., it somewhat abstracts from it (though in some cases it may assume that the execution model has certain characteristics, like fairness, no starvation, etc.).
 Instead, it expresses how input fields map to output fields: for instance, how a field of temperature sensor readings maps to a field of warnings; or, as another example, how a field of service requests and resource advertisements map to a field of task allocations.
-
-<!--TODO WAKE SINCRONIZATION means che facciamo il funzionamento a round (scafi è a round, ma un nostro collega lo sta facendo in maniera reattiva, quindi non è piu a round) our decisione | quindi è necessaria una sincronizzazione tra i round per far si che non ci sia qualcuno che faccia un round all'ora e uno che ne fa tanti-->
