@@ -343,6 +343,7 @@ This error is thrown inside the `Nbr()` construct. As can be seen in the test co
 
 The problem here is that one of the neighbors is not aligned and therefore, when Nbr tries to retrieve the value of the neighbor, it returns None. In Scala this error is catched with a `try-catch` construct, but in Rust this is not possible.
 
-A possible solution is to change the `nbr` signature to return an `Option<A>` but this is of course not feasible.
+A possible solution is to change the `nbr` signature to return a `Result` (an existing Rust construct) which can be either be of type A or Error. Unfortunately, we ran out of hours to spend on the project and we couldn't implement this solution.
+The tests that are failing due to this problems are left in the code base, but they are commented out.
 
-We didn't find a solution to this problem before we ran out of hours to spend on the project. The tests that are failing due to this problems are left in the code base, but they are commented out.
+To conclude, the foldhood construct has been implemented in Rust. It works as intended except in the case in which one of the neighbors is not aligned to the expression called inside the foldhood.
