@@ -30,7 +30,8 @@ pub extern "C" fn rust_function() {
 
 }
 ```
-The Rust compiler mangles symbol names differently than native code linkers expect. Therefore, any function that is exported from Rust to be used outside of Rust must be instructed not to be mangled by the compiler using `#[no_mangle]`. By default, functions written in Rust will use the Rust ABI, which is also not stabilized. However, when creating FFI APIs that are intended for external use, we need to instruct the compiler to use the system ABI by using extern "C".
+The Rust compiler mangles symbol names differently than native code linkers expect. Therefore, any function that is exported from Rust to be used outside Rust must be instructed not to be mangled by the compiler using `#[no_mangle]`. 
+By default, functions written in Rust will use the Rust ABI, which is also not stabilized. However, when creating FFI APIs that are intended for external use, we need to instruct the compiler to use the system ABI by using extern "C".
 
 It is important to note that you cannot use generics in Rust if your code needs to be interoperable with the C language.
 
@@ -138,7 +139,7 @@ impl Language for L {
 }
 ```
 
-This choice ultimately poses a problem when attempting to compose two constructs, due to the aforementioned borrowing limitation:
+This choice ultimately poses a problem when attempting to compose two constructs due to the aforementioned borrowing limitation:
 
 ```rust
 let mut l = L::new();
@@ -154,7 +155,7 @@ In this code block, a mutable borrow is performed at l.rep(), while an immutable
 
 To address the limitation to borrowing in Rust, the concept of a Cell was introduced. A Cell serves as a form of "internal mutability" and acts as a wrapper for a generic type that requires mutation. By wrapping the mutable variable with an immutable Cell, we can mutate the variable through the Cell interface itself. This allows us to have multiple immutable borrows of the Cell while still being able to access and modify its mutable state.
 
-Here's an example of an nbr function that utilizes Cells to pass a reference to round_vm to the closure:
+Here's an example of a nbr function that utilizes Cells to pass a reference to round_vm to the closure:
 
 ```rust
 fn nbr<A: 'static + Clone>(&mut self, expr: impl Fn() -> A) -> A {
@@ -173,7 +174,7 @@ fn nbr<A: 'static + Clone>(&mut self, expr: impl Fn() -> A) -> A {
     }
 ```
 
-This code resolves the issue of having mutable and immutable references to the same variable. However, note that the get() method requires the wrapped type to implement the Copy trait. Unfortunately, the Copy trait cannot be implemented by RoundVM because Export cannot implement it, as it contains references to Any.
+This code resolves the issue of having mutable and immutable references to the same variable. However, note that the get() method requires the wrapped type to implement the Copy trait. Unfortunately, RoundVM cannot implement the Copy trait because Export cannot implement it too, as it contains references to Any.
 
 ### Create a macro to perform dependency injection in functions
 
@@ -185,7 +186,7 @@ The ability to perform dependency injection in functions through a macro such as
         ...
     }
 ```
-would allow fundamental constructs to be defined as pure functions and not methods of an object, making it theoretically possible to write such code:
+it would allow fundamental constructs to be defined as pure functions and not methods of an object, making it theoretically possible to write such code:
 
 ```rust
     let result = rep(||0, |a| nbr(||a) + 1);
@@ -210,7 +211,8 @@ The Scala version of Foldhood is implemented as follows:
   }
 ```
 
-It's not possible to write  the same code in Rust, due to limitations of the language. The function below is the first implementation of the Foldhood in Rust:
+It's not possible to write the same code in Rust due to limitations of the language. 
+The function below is the first implementation of the Foldhood in Rust:
 
 ```rust
 pub fn foldhood<A: Copy + 'static>(mut vm: RoundVM, init: impl Fn() -> A, aggr: impl Fn(A, A) -> A, expr: impl Fn(RoundVM) -> (RoundVM, A)) -> (RoundVM, A) {
@@ -229,11 +231,11 @@ pub fn foldhood<A: Copy + 'static>(mut vm: RoundVM, init: impl Fn() -> A, aggr: 
 }
 ```
 
-The first thing to note is that the type of the `expr` parameter has been changed to `Fn(RoundVM) -> (RoundVM, A)`. This is due to the fact that each language construct takes a VM as a parameter, therefore the expression can't be a closure because otherwise no language construct could be called inside the expression.
+The first thing to note is that the type of the `expr` parameter has been changed to `Fn(RoundVM) -> (RoundVM, A)`. This is due to the fact that each language construct takes a VM as a parameter, therefore, the expression can't be a closure because otherwise no language construct could be called inside the expression.
 
-The nest function has been split in three function: `nest_in` `nest_write` and `nest_out`.
+The nest function has been split in three functions: `nest_in` `nest_write` and `nest_out`.
 
-In scala, the `nest_write` function for the foldhood contruct is the following:
+In scala, the `nest_write` function for the foldhood construct is the following:
 
 ```scala
 exportData.get(status.path).getOrElse(exportData.put(status.path, expr))
@@ -250,7 +252,8 @@ Where the `expr` parameter is the following expression:
 
 The `expr` parameter is a closure that returns a value of type `A`. In Rust, the `expr` parameter is not a closure, but a function that takes a VM as a parameter and returns a tuple of type `(RoundVM, A`. This means that `expr` can be used as input parameter for the `nest_write` construct.
 
-The first solution adopted is to pre-compute alle the value, aggregate them, and call the nest_write function with the result value of the aggregation.
+The first solution adopted is to pre-compute all the values, aggregate them, 
+and call the nest_write function with the result value of the aggregation.
 
 By testing the foldhood, an issue has been found in the following lines of code:
 
@@ -263,12 +266,13 @@ let (mut vm_, preval) = expr(vm);
             });
 ```
 
-The folded_eval computes the value of each device in the neighbor list. In Scala it is called by passing the expression, which is a closure, as a parameter. This can't be done in Rust as a borrowing error occurs. The solution adopted is to, again, pre compute the value of the expression and pass it as a parameter to the folded_eval function.
-This is of course a problem, because each device will have the same value.
+The folded_eval computes the value of each device in the neighbor list. In Scala it is called by passing the expression, which is a closure, as a parameter. This can't be done in Rust as a borrowing error occurs. The solution adopted is to, again, pre-compute the value of the expression and pass it as a parameter to the folded_eval function.
+This is, of course, a problem, because each device will have the same value.
 
 Another problem is that the `expr` requires a VM as a parameter and returns a new VM, so it's not possible to call it inside the map.
 
-The solution adopted is to create a recursive function that for each device compute it's value and then call the function again with the new VM, until all the devices values have been computed.
+The solution adopted is to create a recursive function that for each device computes its value and then call the function again with the new VM, 
+until all the device's values have been computed.
 
 This is the updated code:
 
@@ -310,7 +314,7 @@ fn folded_eval<A: Copy + 'static, F>(mut vm: RoundVM, expr: F, id: Option<i32>) 
 }
 ```
 
-By running the following test an error occured:
+By running the following test, an error occurred:
 
 ```rust
 #[test]
@@ -341,9 +345,9 @@ called `Option::unwrap()` on a `None` value
 
 This error is thrown inside the `Nbr()` construct. As can be seen in the test code, nbr is called inside the foldhood and is part of the expression carried around as `expr()` parameter.
 
-The problem here is that one of the neighbors is not aligned and therefore, when Nbr tries to retrieve the value of the neighbor, it returns None. In Scala this error is catched with a `try-catch` construct, but in Rust this is not possible.
+The problem here is that one of the neighbors is not aligned and therefore, when Nbr tries to retrieve the value of the neighbor, it returns None. In Scala this error is caught with a `try-catch` construct, but in Rust this is not possible.
 
-A possible solution is to change the `nbr` signature to return a `Result` (an existing Rust construct) which can be either be of type A or Error. Unfortunately, we ran out of hours to spend on the project and we couldn't implement this solution.
-The test failing due to this problems can be found in the branch `issue/folded-eval`.
+A possible solution is to change the `nbr` signature to return a `Result` (an existing Rust construct) which can be either be of type A or Error. Unfortunately, we ran out of hours to spend on the project, and we couldn't implement this solution.
+The test failing due to those problems can be found in the branch `issue/folded-eval`.
 
 To conclude, the foldhood construct has been implemented in Rust. It works as intended except in the case in which one of the neighbors is not aligned to the expression called inside the foldhood.
