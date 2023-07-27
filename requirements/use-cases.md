@@ -54,3 +54,19 @@ Here are some of the benefits of using aggregate programming for managing comple
 - Improved reliability: Aggregate programming can help to ensure that services are brought up and down in a consistent and orderly manner, which can reduce the risk of service failures.
 - Increased scalability: Aggregate programming can be used to manage large numbers of services, which can help scale up enterprise applications.
 Overall, aggregate programming is a powerful tool that can be used to simplify and improve the management of complex enterprise services.
+
+# User Stories
+
+## As a user...
+
+> ... I want to define the spatial behavior of a network.
+
+> ... I want to define the temporal behavior of a network.
+
+> ... I want to define the spatial-temporal behavior of a network.
+
+> ... I want to write the aggregate program in a functional way.
+
+> ... I want to simulate the execution of an aggregate program.
+
+> ... I want to run the aggregate program on different types of device.
