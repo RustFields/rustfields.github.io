@@ -45,7 +45,7 @@ The execution of an aggregate program uses a `VM`, which is updated through `rou
 
 ### Field Calculus Execution
 The concept of field calculus execution corresponds to a function from the local device `Context` to an `Export` that contains several informations regarding the execution of the aggregate program. 
-The execution is carried over in rounds by repeatedly updating the local context, calling the `round` function and producing the local export that, alingside the neighbouring exports will form the context for the next round of computation. Here's the signature of the round function:
+The execution is carried over in rounds by repeatedly updating the local context, calling the `round` function and producing the local export that, alongside the neighboring exports will form the context for the next round of computation. Here's the signature of the round function:
 
 ```scala
 def round(c: Context, e: => Any = main()): Export
@@ -63,7 +63,7 @@ This module works with `Context` and `Export` modules.
 ### Context
 Context models the context of a local computation,
 meaning that it has the ID of the device,
-all the exports available to it and various functions to get neighbouring values.
+all the exports available to it and various functions to get neighboring values.
 
 ### Export - Path - Slot
 Export is a data structure that contains the information needed for the coordination with the neighbors.
@@ -74,7 +74,12 @@ A `Slot` can represent primitives like `nbr`, `rep`, `foldhood` and `branch`.
 It also has methods to create paths and associate values to them.
 
 ## Rufi-core
-The design of the `Rufi-core` project resembles the one adopted in the `Scafi-core` module. However, the differences between the Rust language and Scala lead to some notable design differences, that are here discussed. Please note that theese differences have arisen from the limitations that the Rust compiler imposes to the developer and will be discussed in detail inside the [Implementation Issues](../implementation/implementation-issues.md) section.
+The design of the `Rufi-core` project resembles the one adopted in the `Scafi-core` module.
+However,
+the differences between the Rust language and Scala lead to some notable design differences that are here discussed.
+Please note
+that these differences have arisen from the limitations that the Rust compiler imposes on the developer
+and will be discussed in detail inside the [Implementation Issues](../implementation/implementation-issues.md) section.
 
 ### Language
 The `Language` trait is now a simple rust module that contains the core language constructs such as Rep, Nbr, Foldhood and Branch.
@@ -88,7 +93,7 @@ pub mod lang {
 }
 ```
 
-However, theese functions have some differences between the Scala counterparts, mainly they take a `RoundVM` as parameter and return a tuple (RoundVM, A) instead of a simple A value.
+However, these functions have some differences between the Scala counterparts, mainly they take a `RoundVM` as parameter and return a tuple (RoundVM, A) instead of a simple A value.
 For example, here's the nbr function signature:
 
 ```rust
@@ -124,7 +129,7 @@ pub fn nest_in(slot: Slot)
  pub fn nest_out(inc: bool)
 ```
 
-Here is an example of how a language construct is implemented using theese functions:
+Here is an example of how a language construct is implemented using these functions:
 
 ```rust
 pub fn nbr<A>(vm: RoundVM, expr: F) -> (RoundVM, A) {
@@ -136,7 +141,7 @@ pub fn nbr<A>(vm: RoundVM, expr: F) -> (RoundVM, A) {
 }
 ```
 
-Also, the `locally` function has been taken outside the RoundVM's associate functions and is now a private function that is used inside the constructs in the `lang` module. Here is the updated locally signature:
+Also, the `locally` function has been taken outside the RoundVM's associate functions and is now a private function that is used inside the constructs in the `lang` module. Here is the updated _locally_ signature:
 
 ```rust
 fn locally<A, F>(mut vm: RoundVM, expr: F) -> (RoundVM, A)
@@ -145,7 +150,8 @@ where
 ```
 
 ## Scafi-fields
-The `Scafi-fields` module contains a library to enable the use of reified fields inside aggregate programs. It's main purpose is to enable explicit manipulation of fields through the use of language constructs, monadic operations and comprehensions.
+The `Scafi-fields` module contains a library to enable the use of reified fields inside aggregate programs. 
+Its main purpose is to enable explicit manipulation of fields through the use of language constructs, monadic operations and comprehensions.
 
 A field maps devices to values of a generic type, if a device is not in the map, a default value is used. Here's a simple representation of a Field of A's:
 
@@ -153,17 +159,21 @@ A field maps devices to values of a generic type, if a device is not in the map,
 case class Field[A](getMap: Map[Int, A], default: A)
 ```
 
-The Field is meant to represent the local knowledge of the device about the neighbouring values, much like the Context data structure.
+The Field is meant to represent the local knowledge of the device about the neighboring values,
+much like the Context data structure.
 
 
 ### Fields
-The `Fields` trait defines the concept of `Field`, alongside some useful functions and factories. It also includes the instance of `cats`'`Monad` type class for Field, in order to enable special syntax and manipulation inside for-comprehensions. This trait can be mixed with other traits to enable field manipulation inside functions, like we do inside the `FieldLanguage` trait.
+The `Fields` trait defines the concept of `Field`, alongside some useful functions and factories. It also includes the instance of `cats`'`Monad` type class for Field, in order to enable special syntax and manipulation inside for-comprehensions. 
+This trait can be mixed with other traits to enable field manipulation inside functions, like we do inside the `FieldLanguage` trait.
 
 ### Field Language
-This trait defines the core language constructs for the Field Calculus with reified fields. Theese constructs are the same as the regular `ScaFi-core` ones, but they differ in that they also use fields as values.
+This trait defines the core language constructs for the Field Calculus with reified fields. 
+These constructs are the same as the regular `ScaFi-core` ones, but they differ in that they also use fields as values.
 
 ### Field Language Execution
-The 'fields' extension of `ScaFi-core` is meant as a simple extension of the syntax and functionalities that are available inside a regular aggregate program. This means that the core execution architecture is the one defined inside the core module of ScaFi. To enable the execution of an aggregate program with reified fields, the FieldLanguageProgram trait has been introduced:
+The 'fields' extension of `ScaFi-core` is meant as a simple extension of the syntax and functionalities that are available inside a regular aggregate program. 
+This means that the core execution architecture is the one defined inside the core module of ScaFi. To enable the execution of an aggregate program with reified fields, the FieldLanguageProgram trait has been introduced:
 
 ```scala
 trait FieldLanguageProgram extends AggregateProgram with FieldLanguageImpl
