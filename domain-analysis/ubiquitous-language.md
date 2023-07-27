@@ -129,7 +129,6 @@ nav_order: 3
     <tr>
         <td>Exchange</td>
         <td>The exchange construct handles neighbor-to-neighbor propagation of partial accumulates.
-        <!--TODO exchange pensa che non si possa implementare se non reifichiamo i fields || OPERAZIONCINA spazio temporale dove tu puoi manipolare la patch di spazio tempo - ANISOTROPICO --></td>
         <td>Language</td>
     </tr>
     <tr>
