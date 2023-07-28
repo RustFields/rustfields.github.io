@@ -196,6 +196,16 @@ as no problematic borrowing is performed.
 
 It is important to note that currently, there doesn't appear to be a dependency injection framework in Rust capable of implementing the aforementioned code. However, it might be possible to explore potential solutions using Rust's macro system. Macros can provide a mechanism for code generation and abstraction, which could potentially be leveraged to address the dependency injection requirements in the code.
 
+### Make every construct take as owned parameter and return a VM
+The solution we adopted was, finally, making every construct take ownership of a RoundVM and returning it alongside the construct's result inside a tuple. In this way we can use and combine constructs between one another.
+
+```rust
+pub fn nbr<A: Copy + 'static, F>(mut vm: RoundVM, expr: F)
+where
+    F: Fn(RoundVM) -> (RoundVM,A)
+-> (RoundVM, A) 
+```
+
 ## Foldhood implementation issues
 
 The Scala version of Foldhood is implemented as follows:
