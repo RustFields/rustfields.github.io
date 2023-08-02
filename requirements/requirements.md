@@ -7,9 +7,9 @@ nav_order: 1
 
 # Requirements Breakdown Structure
 
-## Native field calculus core
+## Native field calculus core in Rust
 
-1. Implement field calculus syntax in Scala:
+1. Implement field calculus syntax in Rust:
     1. Rep
     2. Nbr
     3. Foldhood
@@ -21,7 +21,6 @@ nav_order: 1
 3. Implement Context
 4. Implement Export
 5. Implement the Round VM
-6. Implement a library that allows the use of reified fields
 
 ## Integration layer between the native core and Scala
 
@@ -29,42 +28,5 @@ nav_order: 1
 
 ## ScaFi with Scala 3
 
-1. Implement field calculus API
-   1. Language
-   2. Builtins
-2. Implement field calculus syntax in Scala:
-    1. Rep
-    2. Nbr
-    3. Foldhood
-    4. Branch
-    5. Exchange
-3. Implement the AST of the aggregate program:
-   1. Slot
-   2. Path
-4. Implement Context
-5. Implement Export
-6. Implement the Round VM
-7. Enable the use of fields as a primary-level entity
-
-## Scafi-core in Rust
-
-1. Implement field calculus API
-   1. Language
-   2. Builtins
-2. Implement field calculus syntax in Rust:
-   1. Rep
-   2. Nbr
-   3. Foldhood
-   4. Branch
-   5. Exchange
-3. Implement the AST of the aggregate program:
-   1. Slot
-   2. Path
-4. Implement Context
-5. Implement Export
-6. Implement the Round VM
-
-## Standardize message format
-
-1. Define standard message structure
-2. Propose a message-passing framework that is platform agnostic
+1. Implement a Scafi-core version in Scala 3
+2. Implement a library that allows the use of reified fields
