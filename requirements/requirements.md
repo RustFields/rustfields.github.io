@@ -46,6 +46,24 @@ nav_order: 1
 6. Implement the Round VM
 7. Enable the use of fields as a primary-level entity
 
+## Scafi-core in Rust
+
+1. Implement field calculus API
+   1. Language
+   2. Builtins
+2. Implement field calculus syntax in Rust:
+   1. Rep
+   2. Nbr
+   3. Foldhood
+   4. Branch
+   5. Exchange
+3. Implement the AST of the aggregate program:
+   1. Slot
+   2. Path
+4. Implement Context
+5. Implement Export
+6. Implement the Round VM
+
 ## Standardize message format
 
 1. Define standard message structure
