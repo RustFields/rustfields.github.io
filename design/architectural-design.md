@@ -6,6 +6,19 @@ nav_order: 1
 ---
 # Architectural design
 
+One of the project's goals is to enable aggregate programming on thin devices. This must be taken into account when choosing the architecture.
+
+The idea is to split the ScaFi core into two parts:
+- The first is written in Scala and allows the user to write an aggregate program.
+- The second is written in Rust and enables the execution natively.
+
+By doing so, the user will interact only with the APIs written in Scala, keeping all the advantages and features of a high-level language.
+
+The main issue here is to decide where to draw a line between Rust and Scala.
+The team decided that a good point of separation is the Round VM, so every time a Round VM method is called, it won't be a standard call but Scala will make use of the Rust implementation of the method.
+
+The detailed architecture of each sub-project will be explained in detail in the next sections.
+
 ## ScaFi-core
 
 The current ScaFi architecture is the following:
@@ -26,7 +39,7 @@ The VM package contains the execution engine of the aggregate program.
 
 ## RuFi-core
 
-Regarding the architecture of RuFi-core, it was decided to stick as much as possible to the original architecture of ScaFi-core
+Regarding the architecture of RuFi-core, it was decided to stick as much as possible to the original architecture of ScaFi-core.
 The RuFi-core architecture is the following:
 
 <div align="center"> 
@@ -35,7 +48,7 @@ The RuFi-core architecture is the following:
 
 ## Integration layer between RuFi-core and ScaFi-core
 
-As regards the integration of the RuFi-core RoundVM in ScaFi-core, it was decided to use an additional layer, written in C, which allows to perform the binding of the APIs
+As regards the integration of the RuFi-core RoundVM in ScaFi-core, it was decided to use an additional layer, written in C, which allows to perform the binding of the APIs exposed in Rust.
 
 <div align="center"> 
     <img src="/assets/images/integration-layer.png">
