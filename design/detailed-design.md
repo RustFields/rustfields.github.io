@@ -149,6 +149,29 @@ where
     F: Fn(RoundVM) -> (RoundVM, A)
 ```
 
+## Integration layer between RuFi-core and ScaFi-core
+
+Two possible options have been identified for the detailed design of the integration layer between RuFi-core and ScaFi-core:
+
+- Wrap the APIs exposed by the original core written in Rust.
+- Rewrite a version of RuFi-core fully interoperable with C.
+
+In any case, the APIs exposed in C are bound to Scala.
+
+In the first solution, we have a layer that wraps the Round VM APIs and makes them compatible with C.
+The exposed C APIs are bound in Scala, in this way ScaFi-core can use the Rust implementation in a completely transparent way.
+
+<div align="center"> 
+    <img src="/assets/images/integration-layer-wrapper.png">
+</div>
+
+The second solution is to rewrite a version of RuFi-core entirely compatible with C.
+This option is chosen in case it is not possible to implement the first one, it also involves the partial replication of the RuFi-core code.
+
+<div align="center"> 
+    <img src="/assets/images/integration-layer-interoperable.png">
+</div>
+
 ## Scafi-fields
 The `Scafi-fields` module contains a library to enable the use of reified fields inside aggregate programs. 
 Its main purpose is to enable explicit manipulation of fields through the use of language constructs, monadic operations and comprehensions.
