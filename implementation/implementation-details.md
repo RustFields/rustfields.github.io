@@ -6,7 +6,7 @@ nav_order: 1
 ---
 
 # Implementation details
-In this section we will discuss the techniques and technologies used to implement the system.
+In this section, we will discuss the techniques and technologies used to implement the system.
 
 ## Rust features
 
@@ -104,14 +104,14 @@ Why not use `Any` directly? The dyn keyword is used to highlight that calls to m
 In this case, we use `Box` because we have a type whose size can’t be known at compile time, and we want to use a value of that type in a context that requires an exact size.
 ### Macros
 
-Fundamentally, macros are a way of writing code that writes other code, which is known as metaprogramming.
+Fundamentally, macros are a way of writing code that writes other code, which is known as meta-programming.
 
 <div align="center"> <img src="/assets/images/rust-macro.png"> </div>
 
 ## Scala features
 
 ### Given Instances
-Given instances define canonical values of certain types that serve for synthesizing arguments to context parameters, defined by the `using` clause, letting the synthesization of repetitive arguments to the compiler. In our project, this mechanism is used in lieu of the scala 2's `implicits`.
+Given instances define canonical values of certain types that serve for synthesizing arguments to context parameters, defined by the `using` clause, letting the synthesis of repetitive arguments in functions. In our project, this mechanism is used instead of Scala 2's `implicits`.
 
 Here's an example of a function that utilizes context parameters:
 
@@ -120,10 +120,10 @@ def fold[A](f: Field[A])(aggr: (A, A) => A)(using d: Defaultable[A]): A =
       fold(f)(d.default)(aggr)
 ```
 
-The given instances of this context parameter can be brought to scope by importing nameoftheobject.`given`.
+The given instances of this context parameter can be brought to scope by importing `nameOfTheObject.given`.
 
 ### Self Types
-Self-types are a way to declare that a trait must be mixed into another trait, even though it doesn’t directly extend it. That makes the members of the dependency available without imports. This mechanism is utilized thoughout the entirety of the ScaFi-fields and ScaFi-core modules to perform dependency injection between traits.
+Self-types are a way to declare that a trait must be mixed into another trait, even though it doesn’t directly extend it. That makes the members of the dependency available without imports. This mechanism is utilized through the entirety of the ScaFi-fields and ScaFi-core modules to perform dependency injection between traits.
 
 Here are a few examples:
 
@@ -146,7 +146,7 @@ trait Fields:
 ### Type Classes
 A type class is an abstract, parameterized type that lets you add new behavior to any closed data type without using sub-typing. This concept can be useful for:
 - Expressing how a type you don’t own—from the standard library or a third-party library—conforms to such behavior
-- Expressing such a behavior for multiple types without involving sub-typing relationships between those types
+- Expressing such behavior for multiple types without involving sub-typing relationships between those types
 
 Here's an example of a type class used inside ScaFi-fields:
 
@@ -155,9 +155,9 @@ trait Defaultable[A]:
   def default: A
 ```
 
-Here we defined, for all the A's that implement this type class, an added behavior of specifying a default value, such as 0 for Int or List.empty for List. This concept is useful when defining a Field since a default value is used when querying the field for a value of a device that is not present inside the device map.
+Here we defined, for all the A's that implement this type class, an added behavior of specifying a default value, such as 0 for Int or List. empty for List. This concept is useful when defining a Field since a default value is used when querying the field for a value of a device that is not present inside the device map.
 
-We can define implicit type class implementations through the `given` mechanism, like we did with the cats.Monad type class:
+We can define implicit type class implementations through the `given` mechanism as we did with the `cats.Monad` type class:
 
 ```scala
  given Monad[Field] with
@@ -173,4 +173,4 @@ We can define implicit type class implementations through the `given` mechanism,
         ...
 ```
 
-With this given instance, we can make our Field act like a monad wherever the given instance is in scope. This is particularly useful for utilizing Fields inside for comprehensions.
+With this given instance, we can make our Field act like a monad wherever the given instance is in scope. This is particularly useful for utilizing Fields inside for comprehension constructs.
