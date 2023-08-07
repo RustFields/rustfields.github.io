@@ -178,13 +178,3 @@ This means that the core execution architecture is the one defined inside the co
 ```scala
 trait FieldLanguageProgram extends AggregateProgram with FieldLanguageImpl
 ```
-
-## Tests
-As Scala's standard on testing, there is a package in every Scala project that contains unit tests and tests with the functions applied as a simulation.
-
-The scala standard is a bit different from the rust's one.
-
-Rust's standard is to have unit test inside the module in which functions are implemented and the others in a specific crate.  
-
-The rust standard makes unit test easier to understand because of the relative implementation right above; 
-on the other hand, the module results to be less readable.
