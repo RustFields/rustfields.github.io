@@ -1,0 +1,64 @@
+<mxfile host="Electron" modified="2023-08-07T10:03:38.783Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.8 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="0L31kvZHpMxbM_CTwI8m" version="21.2.8" type="device">
+  <diagram name="Page-1" id="rcZ7QFQfNiy6P1wvlcNO">
+    <mxGraphModel dx="1434" dy="848" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="SAAA9aUhHMhMgTWM2k91-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#B3B3B3;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="5.5" y="360" width="840" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="gaHuUgxbpLd6TiacL0_3-15" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="5.5" y="240" width="840" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="gaHuUgxbpLd6TiacL0_3-14" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DF6B59;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="5" width="840" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="gaHuUgxbpLd6TiacL0_3-13" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#659BD3;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="5" y="120" width="840" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="gaHuUgxbpLd6TiacL0_3-1" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="5" y="120" as="sourcePoint" />
+            <mxPoint x="840" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gaHuUgxbpLd6TiacL0_3-2" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="7" y="240" as="sourcePoint" />
+            <mxPoint x="842" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gaHuUgxbpLd6TiacL0_3-5" value="Round VM wrapper (hidden)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="303" y="160" width="245" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="gaHuUgxbpLd6TiacL0_3-8" value="Round VM" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="308" y="400" width="235" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="gaHuUgxbpLd6TiacL0_3-9" value="Round VM APIs binding" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="345" y="40" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="gaHuUgxbpLd6TiacL0_3-10" value="Scala" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="680" y="40" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="gaHuUgxbpLd6TiacL0_3-11" value="C" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="680" y="160" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="gaHuUgxbpLd6TiacL0_3-12" value="Rust interoperable with C" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="650" y="280" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SAAA9aUhHMhMgTWM2k91-1" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="7" y="360" as="sourcePoint" />
+            <mxPoint x="842" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SAAA9aUhHMhMgTWM2k91-3" value="Rust" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="695" y="405" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SAAA9aUhHMhMgTWM2k91-4" value="Round VM wrapper" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="308" y="280" width="235" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
