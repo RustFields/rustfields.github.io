@@ -26,7 +26,8 @@ The VM package contains the execution engine of the aggregate program.
 
 ## RuFi-core
 
-The RuFi architecture is the following:
+Regarding the architecture of RuFi-core, it was decided to stick as much as possible to the original architecture of ScaFi-core
+The RuFi-core architecture is the following:
 
 <div align="center"> 
     <img src="/assets/images/rufi-core-architecture.png">
