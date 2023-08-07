@@ -29,7 +29,15 @@ The VM package contains the execution engine of the aggregate program.
 The RuFi architecture is the following:
 
 <div align="center"> 
-    <img src="/assets/images/rufi-core-architecture.png"> 
+    <img src="/assets/images/rufi-core-architecture.png">
+</div>
+
+## Integration layer between RuFi-core and ScaFi-core
+
+As regards the integration of the RuFi-core RoundVM in ScaFi-core, it was decided to use an additional layer, written in C, which allows to perform the binding of the APIs
+
+<div align="center"> 
+    <img src="/assets/images/integration-layer.png">
 </div>
 
 ## ScaFi-fields
