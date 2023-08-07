@@ -40,7 +40,7 @@ def branch[A](cond: => Boolean)(thn: => A)(els: => A): A
 
 By combining these constructs, higher-level functions can be defined to capture increasingly complex collective behavior, called `Builtins`.
 
-## Aggregate Program Execution
+### Aggregate Program Execution
 The execution of an aggregate program uses a `VM`, which is updated through `rounds` of field calculus execution.
 
 ### Field Calculus Execution
@@ -65,7 +65,7 @@ Context models the context of local computation,
 meaning that it has the ID of the device,
 all the exports available to it and various functions to get neighboring values.
 
-### Export - Path - Slot
+### Export, Path and Slot
 Export is a data structure that contains the information needed for coordination with the neighbors.
 The values that are contained inside the Export are `Paths`, working like a stack, that is a list of `Slots` representing a path in a tree (the Export tree-like data structure).
 
@@ -100,7 +100,7 @@ For example, here's the nbr function signature:
 pub fn nbr<A: Copy + 'static>(mut vm: RoundVM, expr: impl Fn(RoundVM) -> (RoundVM,A)) -> (RoundVM, A) 
 ```
 
-## Execution 
+### Execution 
 The execution is still based on `RoundVM` and the `round` function: 
 
 ```rust
@@ -111,7 +111,7 @@ where
 
 However, we can see that Context and Export are now substituted by a RoundVM. Also, the export's root value is returned in a tuple alongside the resulting RoundVM.
 
-## RoundVM
+### RoundVM
 Due to other language limitations to this application,
 the `nest` function from `Scafi-core` has been divided into `nest-in`,
 `nest-write` and `nest-out` functions.
