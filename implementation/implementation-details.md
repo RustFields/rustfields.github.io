@@ -174,3 +174,16 @@ We can define implicit type class implementations through the `given` mechanism 
 ```
 
 With this given instance, we can make our Field act like a monad wherever the given instance is in scope. This is particularly useful for utilizing Fields inside for comprehension constructs.
+
+## Integration layer between RuFi-core and ScaFi-core
+
+Based on the solutions analyzed in the "Detailed design" chapter, various attempts have been made to implement the integration layer between RuFi-core and ScaFi-core. In any case, it was decided to take advantage of the interoperability of Scala Native and Rust with C.
+
+The experimentation carried out has led to partial successes in some cases, while in others it has highlighted the limitations of the interoperability of the languages.
+
+A particular success case that must be mentioned is the one in which a higher-order function was passed from Scala to Rust.
+A specific repository is provided for the details of this case: [scala-native-rust-interoperability-example](https://github.com/RustFields/scala-native-rust-interoperability-example).
+
+For details on the limitations encountered during the interoperability experimentation, a specific section is provided in the "Implementation issues" chapter.
+
+Of the two solutions analyzed in the "Detailed design" chapter, the one in which a fully interoperable implementation of RuFi-core with C is provided was more effective and less problematic. However, due to the problems encountered, it was not possible to provide a complete and functional implementation of this choice.
