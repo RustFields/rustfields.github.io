@@ -28,5 +28,6 @@ The goal of this project is to explore different solutions to make the field cal
 
 ## Helpful links
 
-ScaFi project can be found [here](https://github.com/scafi/scafi).\
+ScaFi project can be found [here](https://github.com/scafi/scafi).
+
 RustFields organization can be found [here](https://github.com/RustFields).
