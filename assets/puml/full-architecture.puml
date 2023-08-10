@@ -1,0 +1,13 @@
+@startuml
+[ScaFi-core] as Scc
+[ScaFi-fields] as Scf
+[RuFi-core] as Ruf
+
+() "IntegrationLayer" as Int
+
+Ruf -- Int
+
+Scf ..> Scc
+
+Scc --> Int
+@enduml
