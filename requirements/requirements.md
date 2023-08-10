@@ -14,7 +14,6 @@ nav_order: 1
     2. Nbr
     3. Foldhood
     4. Branch
-    5. Exchange
 2. Implement the AST of the aggregate program:
    1. Slot
    2. Path
