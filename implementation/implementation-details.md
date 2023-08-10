@@ -186,4 +186,4 @@ A specific repository is provided for the details of this case: [scala-native-ru
 
 For details on the limitations encountered during the interoperability experimentation, a specific section is provided in the "Implementation issues" chapter.
 
-Of the two solutions analyzed in the "Detailed design" chapter, the one in which a fully interoperable implementation of RuFi-core with C is provided was more effective and less problematic. However, due to the problems encountered, it was not possible to provide a complete and functional implementation of this choice.
+Of the two solutions analyzed in the "Detailed design" chapter, the one in which a fully interoperable implementation of RuFi-core with C is provided was more effective and less problematic. However, due to the aforementioned issues, it was not possible to provide a complete and working implementation of this design choice.
