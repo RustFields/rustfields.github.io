@@ -1,11 +1,27 @@
 @startuml
-interface FieldCalculusSyntax
-package field <<folder>> {
-interface Defaultable
-interface Fields
-interface FieldsOp
-Fields -up-|> Defaultable
-Fields -up-* FieldCalculusSyntax
-FieldsOp -up-* Fields
+package ScaFi-core {
+  interface "FieldCalculusSyntax" as FCS
+  interface "RoundVM" as RVM
 }
+
+package ScaFi-Fields {
+  package field {
+    interface "Fields" as F
+    package lang {
+      interface "FieldLanguage" as FL
+      interface "FieldLangImpl" as FLI
+    }
+    package syntax {
+      interface "FieldsSyntax" as FS
+    }
+  }
+}
+
+
+FS --* F
+F *-- FL
+FCS *-- F
+FLI --|> FL
+FLI --* RVM
+
 @enduml
