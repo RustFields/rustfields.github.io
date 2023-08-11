@@ -60,10 +60,12 @@ As regards the integration of the RuFi-core RoundVM in ScaFi-core, it was decide
 
 ## ScaFi-fields
 
-ScaFi fields is a standalone repository that contains a library to enable the use of reified fields in ScaFi.
-The library is written in Scala 3 and it is meant to be used in the ScaFi core.
+ScaFi fields is a standalone repository that contains a ScaFi extension to enable explicit manipulation of reified fields in ScaFi.
+The library is written in Scala 3 and it is meant to be used in conjunction with the ScaFi core.
 This is the architecture of the library:
 
 <div align="center"> 
     <img src="/assets/images/fields.png"> 
 </div>
+
+Every concept introduced by the library falls in the field package. This package contains the `Fields` trait that defines the Field concept. This trait directly depends on the `FieldCalculusSyntax` trait inside ScaFi-core. The `lang` package defines the fundamental language constructs using Fields as input and output values. The `syntax` package contains useful extensions that make working with Fields easier.
