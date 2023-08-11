@@ -6,13 +6,17 @@ nav_order: 1
 ---
 # Architectural design
 
-One of the project's goals is to enable aggregate programming on thin devices. This must be taken into account when choosing the architecture.
+One of the project's main goals is to enable aggregate programming on thin devices. This must be taken into account when choosing the architecture.
 
-The idea is to split the ScaFi core into two parts:
-- The first is written in Scala and allows the user to write an aggregate program.
-- The second is written in Rust and enables the execution natively.
+This goal can be achieved in two ways:
+1. Create a DSL for creating aggregate programs in a natively compiled language, like Rust.
+2. Allow the programmer to write aggregate programs in a hihg level language like Scala while keeping the execution of the program itself native, away from the JVM.
 
-By doing so, the user will interact only with the APIs written in Scala, keeping all the advantages and features of a high-level language.
+Since the project was meant as an exploration of different options for bringing aggregate programming into native contexts, we decided to explore both the solutions. The resulting architecture reflects this choice: in fact, we decided to develop a standalone aggregate programming framework in the Rust language, while also experimenting different ways to integrate it with the Scala ScaFi's ecosystem.
+
+<div align="center"> 
+    <img src="/assets/images/full-architecture.png"> 
+</div>
 
 The main issue here is to decide where to draw a line between Rust and Scala.
 The team decided that a good point of separation is the Round VM, so every time a Round VM method is called, it won't be a standard call but Scala will make use of the Rust implementation of the method.
