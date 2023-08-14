@@ -50,6 +50,8 @@ The RuFi-core architecture is the following:
     <img src="/assets/images/rufi-core-architecture.png">
 </div>
 
+The `lang` package contains the implementation of the core language constructs, that directly utilizes the `RoundVM` defined in the `round_vm` package alongside other related concepts (such as context, export ecc.). The `execution` package contains functions to evaluate aggregate programs.
+
 ## Integration layer between RuFi-core and ScaFi-core
 
 As regards the integration of the RuFi-core RoundVM in ScaFi-core, it was decided to use an additional layer, written in C, which allows to perform the binding of the APIs exposed in Rust.
