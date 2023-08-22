@@ -87,8 +87,7 @@ The workflow diagram is presented below:
 
 ### Code Quality Control
 
-### Tests
-
+A control on the quality of the code takes place thanks to the use of `Git Flow`, which allows the verification of the features introduced by a developer by all the other team members before they are merged into the `main/master branch`. It is the task of the other developers to check that the proposed features are actually working and written in an understandable and clean way.
 
 ### Automatic Dependency Update
 
